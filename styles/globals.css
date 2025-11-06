@@ -1,0 +1,214 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800&family=Comfortaa:wght@300;400;500;600;700&display=swap');
+
+@import "tailwindcss";
+
+/* @custom-variant dark (&:is(.dark *)); */
+
+:root {
+  --font-size: 16px;
+  --font-family-primary: 'Nunito', 'Inter', system-ui, -apple-system, sans-serif;
+  --font-family-heading: 'Comfortaa', 'Nunito', system-ui, -apple-system, sans-serif;
+  --background: #F1F8E9;
+  --foreground: #2E5933;
+  --card: #F9FBE7;
+  --card-foreground: #2E5933;
+  --popover: #F9FBE7;
+  --popover-foreground: #2E5933;
+  --primary: #FFB300;
+  --primary-foreground: #2E5933;
+  --secondary: #66BB6A;
+  --secondary-foreground: #FFFFFF;
+  --muted: #C8E6C8;
+  --muted-foreground: #2E5933;
+  --accent: #4CAF50;
+  --accent-foreground: #FFFFFF;
+  --destructive: #d4183d;
+  --destructive-foreground: #ffffff;
+  --border: rgba(46, 89, 51, 0.2);
+  --input: transparent;
+  --input-background: #E8F5E8;
+  --switch-background: #cbced4;
+  --font-weight-medium: 500;
+  --font-weight-normal: 400;
+  --ring: #FFB300;
+  --chart-1: #FFB300;
+  --chart-2: #8BC34A;
+  --chart-3: #B3E5FC;
+  --chart-4: #6D4C41;
+  --chart-5: #FFFBEB;
+  --radius: 0.625rem;
+  --sidebar: #F1F8E9;
+  --sidebar-foreground: #2E5933;
+  --sidebar-primary: #FFB300;
+  --sidebar-primary-foreground: #2E5933;
+  --sidebar-accent: #4CAF50;
+  --sidebar-accent-foreground: #FFFFFF;
+  --sidebar-border: rgba(46, 89, 51, 0.2);
+  --sidebar-ring: #FFB300;
+}
+
+.dark {
+  --background: #1B2F1B;
+  --foreground: #E8F5E8;
+  --card: #1B2F1B;
+  --card-foreground: #E8F5E8;
+  --popover: #1B2F1B;
+  --popover-foreground: #E8F5E8;
+  --primary: #FFB300;
+  --primary-foreground: #1B2F1B;
+  --secondary: #4CAF50;
+  --secondary-foreground: #1B2F1B;
+  --muted: #2E4A2E;
+  --muted-foreground: #A5D6A7;
+  --accent: #8BC34A;
+  --accent-foreground: #1B2F1B;
+  --destructive: #d4183d;
+  --destructive-foreground: #ffffff;
+  --border: rgba(232, 245, 232, 0.2);
+  --input: rgba(232, 245, 232, 0.1);
+  --ring: #FFB300;
+  --font-weight-medium: 500;
+  --font-weight-normal: 400;
+  --chart-1: #FFB300;
+  --chart-2: #8BC34A;
+  --chart-3: #B3E5FC;
+  --chart-4: #6D4C41;
+  --chart-5: #FFFBEB;
+  --sidebar: #1B2F1B;
+  --sidebar-foreground: #E8F5E8;
+  --sidebar-primary: #FFB300;
+  --sidebar-primary-foreground: #1B2F1B;
+  --sidebar-accent: #2E4A2E;
+  --sidebar-accent-foreground: #E8F5E8;
+  --sidebar-border: rgba(232, 245, 232, 0.2);
+  --sidebar-ring: #FFB300;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-input-background: var(--input-background);
+  --color-switch-background: var(--switch-background);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-family-primary);
+  }
+  
+  html {
+    transition: background-color 0.3s ease;
+    font-family: var(--font-family-primary);
+  }
+}
+
+/**
+ * Base typography. This is not applied to elements which have an ancestor with a Tailwind text class.
+ */
+@layer base {
+  :where(:not(:has([class*=" text-"]), :not(:has([class^="text-"])))) {
+    h1 {
+      font-family: var(--font-family-heading);
+      font-size: var(--text-2xl);
+      font-weight: 700;
+      line-height: 1.4;
+      letter-spacing: -0.025em;
+    }
+
+    h2 {
+      font-family: var(--font-family-heading);
+      font-size: var(--text-xl);
+      font-weight: 600;
+      line-height: 1.4;
+      letter-spacing: -0.02em;
+    }
+
+    h3 {
+      font-family: var(--font-family-heading);
+      font-size: var(--text-lg);
+      font-weight: 600;
+      line-height: 1.4;
+      letter-spacing: -0.015em;
+    }
+
+    h4 {
+      font-family: var(--font-family-heading);
+      font-size: var(--text-base);
+      font-weight: 600;
+      line-height: 1.4;
+    }
+
+    p {
+      font-family: var(--font-family-primary);
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-normal);
+      line-height: 1.6;
+    }
+
+    label {
+      font-family: var(--font-family-primary);
+      font-size: var(--text-base);
+      font-weight: 500;
+      line-height: 1.5;
+    }
+
+    button {
+      font-family: var(--font-family-primary);
+      font-size: var(--text-base);
+      font-weight: 500;
+      line-height: 1.5;
+      letter-spacing: 0.01em;
+    }
+
+    input {
+      font-family: var(--font-family-primary);
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-normal);
+      line-height: 1.5;
+    }
+  }
+}
+
+html {
+  font-size: var(--font-size);
+}
