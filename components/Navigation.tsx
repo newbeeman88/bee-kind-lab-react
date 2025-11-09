@@ -4,7 +4,15 @@ import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger, DropdownMenuSeparator } from './ui/dropdown-menu';
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from './ui/sheet';
 import { User, LogOut, Menu } from 'lucide-react';
-import { CuteBeeIcon, CuteChatIcon, CuteHomeIcon, CuteSettingsIcon, CuteHoneyIcon, CuteCommunityIcon, CuteEventsIcon } from './CuteIcons';
+import { CuteBeeIcon, CuteSettingsIcon, CuteHoneyIcon } from './CuteIcons';
+// import BeeBack from './icons/bee-flower1.svg?react';
+import { BeeHiveIcon } from './icons/BeeHiveIcon';
+import { EventsBeeIcon } from './icons/EventsBeeIcon';
+import { ContactCowIcon } from './icons/ContactCowIcon';
+import { EarthCommunityIcon } from './icons/EarthCommunityIcon';
+import { WritePostsIcon } from './icons/WritePostsIcon';
+import { RobotHeartIcon } from './icons/RobotHeartIcon';
+
 
 interface User {
   username: string;
@@ -72,7 +80,7 @@ export function Navigation({ isLoggedIn, onLoginClick, onLogout, onRegisterClick
                   : 'text-foreground hover:text-primary hover:bg-primary/5'
               }`}
             >
-              <CuteHomeIcon size={18} />
+              <BeeHiveIcon size={18} className="fill-current" />
               <span style={{ fontFamily: 'var(--font-family-primary)' }}>Home</span>
             </button>
             
@@ -85,7 +93,7 @@ export function Navigation({ isLoggedIn, onLoginClick, onLogout, onRegisterClick
                   : 'text-foreground hover:text-primary hover:bg-primary/5'
               }`}
             >
-              <CuteEventsIcon size={18} />
+              <EventsBeeIcon size={18} className="fill-current" />
               <span style={{ fontFamily: 'var(--font-family-primary)' }}>Events</span>
             </button>
             
@@ -99,7 +107,7 @@ export function Navigation({ isLoggedIn, onLoginClick, onLogout, onRegisterClick
                       : 'text-foreground hover:text-primary hover:bg-primary/5'
                   }`}
                 >
-                  <CuteCommunityIcon size={18} />
+                  <EarthCommunityIcon size={18} className="fill-current" />
                   <span style={{ fontFamily: 'var(--font-family-primary)' }}>Community</span>
                 </button>
                 <button 
@@ -110,15 +118,16 @@ export function Navigation({ isLoggedIn, onLoginClick, onLogout, onRegisterClick
                       : 'text-foreground hover:text-primary hover:bg-primary/5'
                   }`}
                 >
-                  <CuteHoneyIcon size={18} />
+                  <WritePostsIcon size={18} className="fill-current" />
                   <span style={{ fontFamily: 'var(--font-family-primary)' }}>My Posts</span>
                 </button>
                 <button 
                   onClick={onChatClick}
                   className="flex items-center space-x-2 px-3 py-2 rounded-full text-foreground hover:text-primary hover:bg-primary/5 transition-all duration-300"
                 >
-                  <CuteChatIcon size={18} />
-                  <span style={{ fontFamily: 'var(--font-family-primary)' }}>Ask AI 🤖</span>
+                  
+                  <RobotHeartIcon size={18} className="fill-current" />
+                  <span style={{ fontFamily: 'var(--font-family-primary)' }}>Ask AI</span>
                 </button>
               </>
             ) : (
@@ -131,7 +140,7 @@ export function Navigation({ isLoggedIn, onLoginClick, onLogout, onRegisterClick
                       : 'text-foreground hover:text-primary hover:bg-primary/5'
                   }`}
                 >
-                  <CuteBeeIcon size={18} />
+                  <ContactCowIcon size={18} className="fill-current" />
                   <span style={{ fontFamily: 'var(--font-family-primary)' }}>About Us</span>
                 </button>
                 <button 
@@ -142,7 +151,7 @@ export function Navigation({ isLoggedIn, onLoginClick, onLogout, onRegisterClick
                       : 'text-foreground hover:text-primary hover:bg-primary/5'
                   }`}
                 >
-                  <CuteCommunityIcon size={18} />
+                  <EarthCommunityIcon size={18} className="fill-current" />
                   <span style={{ fontFamily: 'var(--font-family-primary)' }}>Community</span>
                 </button>
               </>
@@ -238,7 +247,7 @@ export function Navigation({ isLoggedIn, onLoginClick, onLogout, onRegisterClick
                         : 'text-foreground hover:text-primary hover:bg-primary/5'
                     }`}
                   >
-                    <CuteHomeIcon size={20} />
+                    <BeeHiveIcon size={18} className="fill-current" />
                     <span style={{ fontFamily: 'var(--font-family-primary)' }}>Home</span>
                   </button>
                   
@@ -254,7 +263,7 @@ export function Navigation({ isLoggedIn, onLoginClick, onLogout, onRegisterClick
                         : 'text-foreground hover:text-primary hover:bg-primary/5'
                     }`}
                   >
-                    <CuteEventsIcon size={20} />
+                    <EventsBeeIcon size={20} className="fill-current" />
                     <span style={{ fontFamily: 'var(--font-family-primary)' }}>Events</span>
                   </button>
                   
@@ -272,7 +281,7 @@ export function Navigation({ isLoggedIn, onLoginClick, onLogout, onRegisterClick
                             : 'text-foreground hover:text-primary hover:bg-primary/5'
                         }`}
                       >
-                        <CuteCommunityIcon size={20} />
+                        <EarthCommunityIcon size={20} className="fill-current" />
                         <span style={{ fontFamily: 'var(--font-family-primary)' }}>Community</span>
                       </button>
                       
@@ -288,7 +297,7 @@ export function Navigation({ isLoggedIn, onLoginClick, onLogout, onRegisterClick
                             : 'text-foreground hover:text-primary hover:bg-primary/5'
                         }`}
                       >
-                        <CuteHoneyIcon size={20} />
+                        <WritePostsIcon size={20} className="fill-current" />
                         <span style={{ fontFamily: 'var(--font-family-primary)' }}>My Posts</span>
                       </button>
                       
@@ -300,8 +309,8 @@ export function Navigation({ isLoggedIn, onLoginClick, onLogout, onRegisterClick
                         }}
                         className="flex items-center space-x-3 px-4 py-3 rounded-lg transition-all duration-300 text-left w-full text-foreground hover:text-primary hover:bg-primary/5"
                       >
-                        <CuteChatIcon size={20} />
-                        <span style={{ fontFamily: 'var(--font-family-primary)' }}>Ask AI 🤖</span>
+                        <RobotHeartIcon size={20} className="fill-current" />
+                        <span style={{ fontFamily: 'var(--font-family-primary)' }}>Ask AI</span>
                       </button>
                     </>
                   ) : (
@@ -318,7 +327,7 @@ export function Navigation({ isLoggedIn, onLoginClick, onLogout, onRegisterClick
                             : 'text-foreground hover:text-primary hover:bg-primary/5'
                         }`}
                       >
-                        <CuteBeeIcon size={20} />
+                        <ContactCowIcon size={20} className="fill-current" />
                         <span style={{ fontFamily: 'var(--font-family-primary)' }}>About Us</span>
                       </button>
                       
@@ -334,7 +343,7 @@ export function Navigation({ isLoggedIn, onLoginClick, onLogout, onRegisterClick
                             : 'text-foreground hover:text-primary hover:bg-primary/5'
                         }`}
                       >
-                        <CuteCommunityIcon size={20} />
+                        <EarthCommunityIcon size={20} className="fill-current" />
                         <span style={{ fontFamily: 'var(--font-family-primary)' }}>Community</span>
                       </button>
                       

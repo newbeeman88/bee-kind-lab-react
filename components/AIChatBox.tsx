@@ -1,8 +1,8 @@
 import { useState, useRef, useEffect } from 'react';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
-import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
-import { MessageCircle, Send, X, Minimize2, Bot } from 'lucide-react';
+// import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
+import {Send, X, Minimize2, Bot } from 'lucide-react';
 
 interface Message {
   id: string;
@@ -17,12 +17,23 @@ interface AIChatBoxProps {
   onChatToggle?: (isOpen: boolean) => void;
 }
 
+// Mock answers for now 
+// This function will be revised by interating with a LLM 
 const mockResponses = [
   "Great question! For varroa mite treatment, I'd recommend using formic acid strips during late summer. They're effective and don't contaminate honey stores. 🍯",
   "It sounds like your bees might be preparing to swarm. Look for queen cells and consider doing a split if you see multiple capped queen cells. 🐝",
   "For winter preparation, make sure your hive has adequate honey stores (40-60 lbs), proper ventilation, and is protected from wind. Also check for a laying queen. ❄️",
   "That's normal behavior during nectar flow! Bees become more active when there's plenty of food available. Make sure you have enough supers for honey storage. 🌸",
-  "Propolis is amazing! You can use it for tinctures, salves, or even natural wood finishes. Just make sure to filter it properly before use. ✨"
+  "Propolis is amazing! You can use it for tinctures, salves, or even natural wood finishes. Just make sure to filter it properly before use. ✨",
+  "Welcome to the hive! 🐝 The first step is learning about your local beekeeping regulations and environment. Then, get essential equipment — a hive box, smoker, bee suit, and gloves. Finally, decide whether you'll start with a nucleus colony (nuc) or a package of bees. Starting small but steady is key.",
+  "Choose a sunny spot that's protected from strong winds and has good drainage. Bees love morning sunlight — it helps them start foraging earlier. Make sure the hive entrance faces away from busy paths and neighbors to avoid unwanted encounters.",
+  "Harvest when at least 80% of the honeycomb cells are capped with wax. That means the moisture content is low enough to store safely. Too early, and the honey can ferment. You can use a refractometer if you want to check — below 18% moisture is perfect.",
+  "First, check the weather — bees slow down when it's cold or humid. Then inspect for varroa mites or signs of disease (like deformed wings). Also, make sure there's enough food — bees might be short on nectar or pollen.",
+  "Reduce the hive's entrance to keep out mice, ensure proper ventilation to avoid moisture, and leave enough honey for the colony — around 20 - 25 kg depending on your region. Avoid opening the hive too often; bees need stability during cold months.",
+  "Look for consistent egg-laying — one egg per cell, centered at the bottom. The brood pattern should be dense and uniform. If you see scattered brood, multiple eggs per cell, or no eggs at all, your queen may be weak or missing.",
+  "Don't panic — swarming is natural. It usually means the hive is crowded. If you spot queen cells early, you can create a split to give the colony more space. If they've already left, try capturing the swarm into a new hive box near the old one.",
+  "Yes, many urban beekeepers do! Just make sure to check local regulations. Provide a nearby water source (like a shallow dish with pebbles), place the hive where bees can fly upward and away from people, and use plants to guide their flight path.",
+
 ];
 
 export function AIChatBox({ isLoggedIn, showChat, onChatToggle }: AIChatBoxProps) {
@@ -31,7 +42,7 @@ export function AIChatBox({ isLoggedIn, showChat, onChatToggle }: AIChatBoxProps
   const [messages, setMessages] = useState<Message[]>([
     {
       id: '1',
-      content: "Hello! I'm the Bee AI 🐝, your friendly beekeeping assistant! Ask me anything about hive management, bee behavior, honey production, or beekeeping techniques. I'm here to help you become a better beekeeper! 🍯",
+      content: "Hello! I'm the BeeKInd AI 🐝, your friendly beekeeping assistant! Ask me anything about hive management, bee behavior, honey production, or beekeeping techniques. I'm here to help you become a better beekeeper! 🍯",
       isUser: false,
       timestamp: new Date()
     }
@@ -155,7 +166,7 @@ export function AIChatBox({ isLoggedIn, showChat, onChatToggle }: AIChatBoxProps
           
           {/* Tooltip */}
           <div className="absolute bottom-full right-0 mb-2 px-3 py-1 bg-foreground/90 text-background text-sm rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
-            Ask the Bee AI! 🍯
+            Ask the BeeKind AI! 🍯
           </div>
         </div>
       )}
@@ -165,7 +176,7 @@ export function AIChatBox({ isLoggedIn, showChat, onChatToggle }: AIChatBoxProps
         <div className={`fixed bottom-4 right-4 shadow-2xl z-50 transition-all duration-300 bg-card/95 backdrop-blur-sm border-2 border-border rounded-lg ${
           isMinimized 
             ? 'h-14 w-72' 
-            : 'h-[32rem] w-80 sm:w-96 md:w-[28rem]'
+            : 'h-[32rem] w-80 sm:w-96 md:w-[30rem] lg:w-[32rem]'
         } max-h-[80vh] max-w-[calc(100vw-2rem)] flex flex-col`}>
           
           {/* Header */}
@@ -177,7 +188,7 @@ export function AIChatBox({ isLoggedIn, showChat, onChatToggle }: AIChatBoxProps
                 </div>
                 <div className="absolute -bottom-1 -right-1 w-3 h-3 bg-green-500 rounded-full border-2 border-card animate-pulse"></div>
               </div>
-              <span className="text-foreground">Ask the Bee AI 🐝</span>
+              <span className="text-foreground">Ask the BeeKind AI 🐝</span>
             </div>
             <div className="flex space-x-1">
               <Button
@@ -243,14 +254,16 @@ export function AIChatBox({ isLoggedIn, showChat, onChatToggle }: AIChatBoxProps
                           </div>
                         )}
                         <div
-                          className={`max-w-[75%] p-3 rounded-2xl text-sm shadow-sm ${
+                          className={`max-w-[85%] p-3 rounded-2xl text-sm shadow-sm break-words overflow-wrap-anywhere ${
                             message.isUser
                               ? 'bg-gradient-to-r from-primary to-primary/90 text-primary-foreground rounded-br-md'
                               : 'bg-muted text-muted-foreground rounded-bl-md border border-border/50'
                           }`}
-                          style={{ fontFamily: 'var(--font-family-primary)' }}
+                          style={{ fontFamily: 'var(--font-family-primary)', wordBreak: 'break-word', overflowWrap: 'anywhere' }}
                         >
-                          {message.content}
+                          <div className="whitespace-pre-wrap">
+                            {message.content}
+                          </div>
                           <div className={`text-xs mt-1 opacity-60 ${message.isUser ? 'text-right' : 'text-left'}`}>
                             {message.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                           </div>
@@ -269,7 +282,7 @@ export function AIChatBox({ isLoggedIn, showChat, onChatToggle }: AIChatBoxProps
                         <div className="w-6 h-6 bg-gradient-to-r from-[#FFB300] to-[#FFA000] rounded-full flex items-center justify-center flex-shrink-0 mt-1">
                           <Bot className="w-3 h-3 text-white" />
                         </div>
-                        <div className="bg-muted text-muted-foreground p-3 rounded-2xl rounded-bl-md border border-border/50 shadow-sm">
+                        <div className="bg-muted text-muted-foreground p-3 rounded-2xl rounded-bl-md border border-border/50 shadow-sm max-w-[85%]">
                           <div className="flex space-x-1">
                             <div className="w-2 h-2 bg-primary rounded-full animate-bounce"></div>
                             <div className="w-2 h-2 bg-primary rounded-full animate-bounce" style={{animationDelay: '0.1s'}}></div>
