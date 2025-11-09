@@ -5,13 +5,15 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigge
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from './ui/sheet';
 import { User, LogOut, Menu } from 'lucide-react';
 import { CuteBeeIcon, CuteSettingsIcon, CuteHoneyIcon } from './CuteIcons';
-// import BeeBack from './icons/bee-flower1.svg?react';
-import { BeeHiveIcon } from './icons/BeeHiveIcon';
-import { EventsBeeIcon } from './icons/EventsBeeIcon';
-import { ContactCowIcon } from './icons/ContactCowIcon';
-import { EarthCommunityIcon } from './icons/EarthCommunityIcon';
-import { WritePostsIcon } from './icons/WritePostsIcon';
-import { RobotHeartIcon } from './icons/RobotHeartIcon';
+
+import {
+  WritePostsIcon,
+  RobotHeartIcon,
+  EventsBeeIcon,
+  EarthCommunityIcon,
+  ContactCowIcon,
+  BeeHiveIcon,
+} from './MyIcons';
 
 
 interface User {
@@ -64,9 +66,9 @@ export function Navigation({ isLoggedIn, onLoginClick, onLogout, onRegisterClick
             </div>
             <div className="flex flex-col">
               <span className="text-xl font-bold text-foreground tracking-tight" style={{ fontFamily: 'var(--font-family-heading)' }}>
-                The Hive Hub
+                BeeKind Lab
               </span>
-              <span className="text-xs text-muted-foreground font-medium -mt-1">Sweet Community 🍯</span>
+              <span className="text-xs text-muted-foreground font-medium -mt-1">BeeKind & BeeNice 🍯</span>
             </div>
           </div>
 
@@ -227,7 +229,7 @@ export function Navigation({ isLoggedIn, onLoginClick, onLogout, onRegisterClick
                     </div>
                     <div className="flex flex-col items-start">
                       <span className="text-lg font-bold text-foreground tracking-tight" style={{ fontFamily: 'var(--font-family-heading)' }}>
-                        The Hive Hub
+                        BeeKind Lab
                       </span>
                       <span className="text-xs text-muted-foreground font-medium -mt-1">Sweet Community 🍯</span>
                     </div>
