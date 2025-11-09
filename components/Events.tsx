@@ -7,8 +7,9 @@ import { Textarea } from './ui/textarea';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from './ui/dialog';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './ui/select';
 import { CuteBeeIcon, CuteEventsIcon, CuteHoneyIcon, CuteHeartIcon } from './CuteIcons';
-import { Calendar, MapPin, Clock, Users, ChevronRight, Plus } from 'lucide-react';
+import { Calendar, MapPin, Clock, Users, ChevronRight, Plus, Edit, Upload, X, Image as ImageIcon } from 'lucide-react';
 import { toast } from 'sonner';
+import { ImageWithFallback } from './figma/ImageWithFallback';
 
 interface User {
   username: string;
@@ -57,7 +58,7 @@ const mockEvents: Event[] = [
     attendees: 12,
     maxAttendees: 20,
     organizer: 'Master Beekeeper Sarah',
-    image: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&h=300&fit=crop',
+    image: 'https://images.unsplash.com/photo-1504392022767-a8fc0771f239?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1335',
     tags: ['beginner-friendly', 'hands-on', 'inspection'],
     isPublic: true,
     price: '$25',
@@ -89,7 +90,7 @@ const mockEvents: Event[] = [
     attendees: 45,
     maxAttendees: 100,
     organizer: 'Golden Valley Beekeepers',
-    image: 'https://images.unsplash.com/photo-1551582045-6ec9c11d8697?w=600&h=300&fit=crop',
+    image: 'https://plus.unsplash.com/premium_photo-1661436218530-7e186ab76c3c?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjV8fGJlZXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&q=60&w=900',
     tags: ['harvest', 'family-friendly', 'tasting'],
     isPublic: true,
     price: '$15',
@@ -138,7 +139,7 @@ const mockEvents: Event[] = [
     attendees: 6,
     maxAttendees: 12,
     organizer: 'Beekeeping Academy',
-    image: 'https://images.unsplash.com/photo-1568526381923-caf3fd520382?w=600&h=300&fit=crop',
+    image: 'https://plus.unsplash.com/premium_photo-1700145523692-37b02e57ae71?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDV8fGJlZXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&q=60&w=900',
     tags: ['beginner', 'course', 'comprehensive'],
     isPublic: true,
     price: '$150',
@@ -150,6 +151,8 @@ export function Events({ isLoggedIn, user, onLoginClick, onRegisterClick }: Even
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [events, setEvents] = useState<Event[]>(mockEvents);
   const [showCreateEvent, setShowCreateEvent] = useState(false);
+  const [showEditEvent, setShowEditEvent] = useState(false);
+  const [editingEventId, setEditingEventId] = useState<string | null>(null);
   
   // Create Event Form State
   const [newEvent, setNewEvent] = useState({
@@ -161,8 +164,27 @@ export function Events({ isLoggedIn, user, onLoginClick, onRegisterClick }: Even
     type: 'workshop' as Event['type'],
     maxAttendees: '',
     price: '',
-    tags: ''
+    tags: '',
+    image: ''
   });
+
+  // Edit Event Form State
+  const [editEvent, setEditEvent] = useState({
+    title: '',
+    description: '',
+    date: '',
+    time: '',
+    location: '',
+    type: 'workshop' as Event['type'],
+    maxAttendees: '',
+    price: '',
+    tags: '',
+    image: ''
+  });
+
+  // Image preview states
+  const [newEventImagePreview, setNewEventImagePreview] = useState<string>('');
+  const [editEventImagePreview, setEditEventImagePreview] = useState<string>('');
 
   const categories = [
     { id: 'all', label: 'All Events', count: events.length },
@@ -217,6 +239,63 @@ export function Events({ isLoggedIn, user, onLoginClick, onRegisterClick }: Even
     });
   };
 
+  const getDefaultEventImage = (type: Event['type']) => {
+    switch (type) {
+      case 'workshop':
+        return 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&h=300&fit=crop';
+      case 'harvest':
+        return 'https://images.unsplash.com/photo-1551582045-6ec9c11d8697?w=600&h=300&fit=crop';
+      case 'meetup':
+        return 'https://images.unsplash.com/photo-1568526381923-caf3fd520382?w=600&h=300&fit=crop';
+      case 'online':
+        return 'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=600&h=300&fit=crop';
+      case 'seasonal':
+        return 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&h=300&fit=crop';
+      default:
+        return 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&h=300&fit=crop';
+    }
+  };
+
+  const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>, isEdit: boolean = false) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    // Check file size (max 5MB)
+    if (file.size > 5 * 1024 * 1024) {
+      toast.error('Image size should be less than 5MB');
+      return;
+    }
+
+    // Check file type
+    if (!file.type.startsWith('image/')) {
+      toast.error('Please upload an image file');
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      const imageUrl = reader.result as string;
+      if (isEdit) {
+        setEditEvent(prev => ({ ...prev, image: imageUrl }));
+        setEditEventImagePreview(imageUrl);
+      } else {
+        setNewEvent(prev => ({ ...prev, image: imageUrl }));
+        setNewEventImagePreview(imageUrl);
+      }
+    };
+    reader.readAsDataURL(file);
+  };
+
+  const handleRemoveImage = (isEdit: boolean = false) => {
+    if (isEdit) {
+      setEditEvent(prev => ({ ...prev, image: '' }));
+      setEditEventImagePreview('');
+    } else {
+      setNewEvent(prev => ({ ...prev, image: '' }));
+      setNewEventImagePreview('');
+    }
+  };
+
   const handleJoinEvent = (eventId: string) => {
     if (!isLoggedIn || !user) return;
 
@@ -259,7 +338,8 @@ export function Events({ isLoggedIn, user, onLoginClick, onRegisterClick }: Even
       price: newEvent.price || undefined,
       tags: newEvent.tags.split(',').map(tag => tag.trim()).filter(tag => tag.length > 0),
       isPublic: true,
-      isAttending: true
+      isAttending: true,
+      image: newEvent.image || getDefaultEventImage(newEvent.type)
     };
 
     setEvents(prevEvents => [event, ...prevEvents]);
@@ -272,8 +352,10 @@ export function Events({ isLoggedIn, user, onLoginClick, onRegisterClick }: Even
       type: 'workshop',
       maxAttendees: '',
       price: '',
-      tags: ''
+      tags: '',
+      image: ''
     });
+    setNewEventImagePreview('');
     setShowCreateEvent(false);
     
     toast.success(`"${event.title}" has been created successfully! 🎉`);
@@ -285,6 +367,67 @@ export function Events({ isLoggedIn, user, onLoginClick, onRegisterClick }: Even
       return;
     }
     setShowCreateEvent(true);
+  };
+
+  const handleEditEventClick = (event: Event) => {
+    setEditingEventId(event.id);
+    setEditEvent({
+      title: event.title,
+      description: event.description,
+      date: event.date,
+      time: event.time,
+      location: event.location,
+      type: event.type,
+      maxAttendees: event.maxAttendees?.toString() || '',
+      price: event.price || '',
+      tags: event.tags.join(', '),
+      image: event.image || ''
+    });
+    setEditEventImagePreview(event.image || '');
+    setShowEditEvent(true);
+  };
+
+  const handleUpdateEvent = () => {
+    if (!isLoggedIn || !user || !editingEventId) return;
+
+    setEvents(prevEvents =>
+      prevEvents.map(event =>
+        event.id === editingEventId
+          ? {
+              ...event,
+              title: editEvent.title,
+              description: editEvent.description,
+              date: editEvent.date,
+              time: editEvent.time,
+              location: editEvent.location,
+              type: editEvent.type,
+              maxAttendees: editEvent.maxAttendees ? parseInt(editEvent.maxAttendees) : undefined,
+              price: editEvent.price || undefined,
+              tags: editEvent.tags.split(',').map(tag => tag.trim()).filter(tag => tag.length > 0),
+              image: editEvent.image || event.image || getDefaultEventImage(editEvent.type)
+            }
+          : event
+      )
+    );
+
+    const updatedEvent = events.find(e => e.id === editingEventId);
+    setEditEvent({
+      title: '',
+      description: '',
+      date: '',
+      time: '',
+      location: '',
+      type: 'workshop',
+      maxAttendees: '',
+      price: '',
+      tags: '',
+      image: ''
+    });
+    setEditEventImagePreview('');
+    setShowEditEvent(false);
+    setEditingEventId(null);
+    
+    toast.success(`\"${updatedEvent?.title}\" has been updated successfully! ✨`);
   };
 
   return (
@@ -328,44 +471,34 @@ export function Events({ isLoggedIn, user, onLoginClick, onRegisterClick }: Even
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {filteredEvents.map((event) => (
           <Card key={event.id} className="overflow-hidden hover:shadow-lg transition-all duration-300 border-border/50 bg-card/50 backdrop-blur-sm">
-            {event.image && (
-              <div className="relative h-48 overflow-hidden">
-                <img 
-                  src={event.image} 
-                  alt={event.title}
-                  className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
-                />
-                <div className="absolute top-3 left-3">
-                  <Badge className={`${getEventTypeColor(event.type)} border`}>
-                    <div className="flex items-center space-x-1">
-                      {getEventTypeIcon(event.type)}
-                      <span className="capitalize">{event.type}</span>
-                    </div>
+            <div className="relative h-48 overflow-hidden">
+              <ImageWithFallback 
+                src={event.image || getDefaultEventImage(event.type)} 
+                alt={event.title}
+                className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+              />
+              <div className="absolute top-3 left-3">
+                <Badge className={`${getEventTypeColor(event.type)} border`}>
+                  <div className="flex items-center space-x-1">
+                    {getEventTypeIcon(event.type)}
+                    <span className="capitalize">{event.type}</span>
+                  </div>
+                </Badge>
+              </div>
+              {event.price && (
+                <div className="absolute top-3 right-3">
+                  <Badge className="bg-primary text-primary-foreground border-primary/30">
+                    {event.price}
                   </Badge>
                 </div>
-                {event.price && (
-                  <div className="absolute top-3 right-3">
-                    <Badge className="bg-primary text-primary-foreground border-primary/30">
-                      {event.price}
-                    </Badge>
-                  </div>
-                )}
-              </div>
-            )}
+              )}
+            </div>
             
             <CardHeader className="pb-3">
               <div className="flex items-start justify-between">
                 <CardTitle className="text-lg line-clamp-2" style={{ fontFamily: 'var(--font-family-heading)' }}>
                   {event.title}
                 </CardTitle>
-                {!event.image && (
-                  <Badge className={`${getEventTypeColor(event.type)} border ml-2 flex-shrink-0`}>
-                    <div className="flex items-center space-x-1">
-                      {getEventTypeIcon(event.type)}
-                      <span className="capitalize">{event.type}</span>
-                    </div>
-                  </Badge>
-                )}
               </div>
             </CardHeader>
 
@@ -411,23 +544,48 @@ export function Events({ isLoggedIn, user, onLoginClick, onRegisterClick }: Even
 
               <div className="pt-2">
                 {isLoggedIn ? (
-                  <Button 
-                    onClick={() => handleJoinEvent(event.id)}
-                    className={`w-full transition-all duration-300 ${
-                      event.isAttending
-                        ? 'bg-green-600 hover:bg-green-700 text-white'
-                        : 'bg-gradient-to-r from-primary to-secondary text-white hover:from-primary/90 hover:to-secondary/90'
-                    }`}
-                    disabled={Boolean(!event.isAttending && event.maxAttendees && event.attendees >= event.maxAttendees)}
-                  >
-                    <div className="flex items-center justify-center space-x-2">
-                      <span>
-                        {event.isAttending ? 'Leave Event' : 
-                         (event.maxAttendees && event.attendees >= event.maxAttendees ? 'Event Full' : 'Join Event')}
-                      </span>
-                      <ChevronRight className="w-4 h-4" />
+                  event.organizer === user?.username ? (
+                    <div className="space-y-2">
+                      <Button 
+                        onClick={() => handleEditEventClick(event)}
+                        className="w-full bg-gradient-to-r from-blue-600 to-blue-700 text-white hover:from-blue-700 hover:to-blue-800 transition-all duration-300"
+                      >
+                        <div className="flex items-center justify-center space-x-2">
+                          <Edit className="w-4 h-4" />
+                          <span>Edit Event</span>
+                        </div>
+                      </Button>
+                      <Button 
+                        onClick={() => handleJoinEvent(event.id)}
+                        variant="outline"
+                        className="w-full"
+                      >
+                        <div className="flex items-center justify-center space-x-2">
+                          <span>
+                            {event.isAttending ? 'Leave Event' : 'Join Event'}
+                          </span>
+                        </div>
+                      </Button>
                     </div>
-                  </Button>
+                  ) : (
+                    <Button 
+                      onClick={() => handleJoinEvent(event.id)}
+                      className={`w-full transition-all duration-300 ${
+                        event.isAttending
+                          ? 'bg-green-600 hover:bg-green-700 text-white'
+                          : 'bg-gradient-to-r from-primary to-secondary text-white hover:from-primary/90 hover:to-secondary/90'
+                      }`}
+                      disabled={Boolean(!event.isAttending && event.maxAttendees && event.attendees >= event.maxAttendees)}
+                    >
+                      <div className="flex items-center justify-center space-x-2">
+                        <span>
+                          {event.isAttending ? 'Leave Event' : 
+                           (event.maxAttendees && event.attendees >= event.maxAttendees ? 'Event Full' : 'Join Event')}
+                        </span>
+                        <ChevronRight className="w-4 h-4" />
+                      </div>
+                    </Button>
+                  )
                 ) : (
                   <div className="space-y-2">
                     <p className="text-xs text-muted-foreground text-center">
@@ -499,6 +657,56 @@ export function Events({ isLoggedIn, user, onLoginClick, onRegisterClick }: Even
                     </DialogTitle>
                   </DialogHeader>
                   <div className="space-y-6 pt-4">
+                    {/* Event Image Upload */}
+                    <div>
+                      <label className="block text-sm font-medium mb-2">Event Cover Photo</label>
+                      <div className="space-y-3">
+                        {newEventImagePreview ? (
+                          <div className="relative w-full h-48 rounded-lg overflow-hidden border-2 border-border">
+                            <img 
+                              src={newEventImagePreview} 
+                              alt="Event preview"
+                              className="w-full h-full object-cover"
+                            />
+                            <Button
+                              type="button"
+                              size="sm"
+                              variant="destructive"
+                              className="absolute top-2 right-2"
+                              onClick={() => handleRemoveImage(false)}
+                            >
+                              <X className="w-4 h-4" />
+                            </Button>
+                          </div>
+                        ) : (
+                          <div className="border-2 border-dashed border-border rounded-lg p-8 text-center hover:border-primary/50 transition-colors">
+                            <label htmlFor="new-event-image" className="cursor-pointer">
+                              <div className="flex flex-col items-center space-y-2">
+                                <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
+                                  <Upload className="w-6 h-6 text-primary" />
+                                </div>
+                                <div>
+                                  <p className="text-sm font-medium text-foreground">Upload event photo</p>
+                                  <p className="text-xs text-muted-foreground">PNG, JPG up to 5MB</p>
+                                </div>
+                              </div>
+                              <input
+                                id="new-event-image"
+                                type="file"
+                                accept="image/*"
+                                className="hidden"
+                                onChange={(e) => handleImageUpload(e, false)}
+                              />
+                            </label>
+                          </div>
+                        )}
+                        <p className="text-xs text-muted-foreground">
+                          <ImageIcon className="w-3 h-3 inline mr-1" />
+                          A default image will be used if none is uploaded
+                        </p>
+                      </div>
+                    </div>
+
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div className="md:col-span-2">
                         <label className="block text-sm font-medium mb-2">Event Title *</label>
@@ -634,6 +842,184 @@ export function Events({ isLoggedIn, user, onLoginClick, onRegisterClick }: Even
           </CardContent>
         </Card>
       </div>
+
+      {/* Edit Event Dialog */}
+      <Dialog open={showEditEvent} onOpenChange={setShowEditEvent}>
+        <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto modal-scroll">
+          <DialogHeader>
+            <DialogTitle className="flex items-center space-x-2">
+              <Edit className="w-5 h-5" />
+              <span>Edit Event</span>
+            </DialogTitle>
+          </DialogHeader>
+          <div className="space-y-6 pt-4">
+            {/* Event Image Upload */}
+            <div>
+              <label className="block text-sm font-medium mb-2">Event Cover Photo</label>
+              <div className="space-y-3">
+                {editEventImagePreview ? (
+                  <div className="relative w-full h-48 rounded-lg overflow-hidden border-2 border-border">
+                    <img 
+                      src={editEventImagePreview} 
+                      alt="Event preview"
+                      className="w-full h-full object-cover"
+                    />
+                    <Button
+                      type="button"
+                      size="sm"
+                      variant="destructive"
+                      className="absolute top-2 right-2"
+                      onClick={() => handleRemoveImage(true)}
+                    >
+                      <X className="w-4 h-4" />
+                    </Button>
+                  </div>
+                ) : (
+                  <div className="border-2 border-dashed border-border rounded-lg p-8 text-center hover:border-primary/50 transition-colors">
+                    <label htmlFor="edit-event-image" className="cursor-pointer">
+                      <div className="flex flex-col items-center space-y-2">
+                        <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
+                          <Upload className="w-6 h-6 text-primary" />
+                        </div>
+                        <div>
+                          <p className="text-sm font-medium text-foreground">Upload event photo</p>
+                          <p className="text-xs text-muted-foreground">PNG, JPG up to 5MB</p>
+                        </div>
+                      </div>
+                      <input
+                        id="edit-event-image"
+                        type="file"
+                        accept="image/*"
+                        className="hidden"
+                        onChange={(e) => handleImageUpload(e, true)}
+                      />
+                    </label>
+                  </div>
+                )}
+                <p className="text-xs text-muted-foreground">
+                  <ImageIcon className="w-3 h-3 inline mr-1" />
+                  A default image will be used if none is uploaded
+                </p>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="md:col-span-2">
+                <label className="block text-sm font-medium mb-2">Event Title *</label>
+                <Input
+                  placeholder="e.g., Spring Hive Inspection Workshop"
+                  value={editEvent.title}
+                  onChange={(e) => setEditEvent(prev => ({ ...prev, title: e.target.value }))}
+                />
+              </div>
+              
+              <div className="md:col-span-2">
+                <label className="block text-sm font-medium mb-2">Description *</label>
+                <Textarea
+                  placeholder="Describe your event, what attendees will learn or experience..."
+                  value={editEvent.description}
+                  onChange={(e) => setEditEvent(prev => ({ ...prev, description: e.target.value }))}
+                  rows={4}
+                />
+              </div>
+              
+              <div>
+                <label className="block text-sm font-medium mb-2">Date *</label>
+                <Input
+                  type="date"
+                  value={editEvent.date}
+                  onChange={(e) => setEditEvent(prev => ({ ...prev, date: e.target.value }))}
+                  min={new Date().toISOString().split('T')[0]}
+                />
+              </div>
+              
+              <div>
+                <label className="block text-sm font-medium mb-2">Time *</label>
+                <Input
+                  type="time"
+                  value={editEvent.time}
+                  onChange={(e) => setEditEvent(prev => ({ ...prev, time: e.target.value }))}
+                />
+              </div>
+              
+              <div className="md:col-span-2">
+                <label className="block text-sm font-medium mb-2">Location *</label>
+                <Input
+                  placeholder="e.g., Sunny Meadows Apiary, 123 Honey Lane or Virtual (Zoom)"
+                  value={editEvent.location}
+                  onChange={(e) => setEditEvent(prev => ({ ...prev, location: e.target.value }))}
+                />
+              </div>
+              
+              <div>
+                <label className="block text-sm font-medium mb-2">Event Type *</label>
+                <Select value={editEvent.type} onValueChange={(value: Event['type']) => setEditEvent(prev => ({ ...prev, type: value }))}>
+                  <SelectTrigger>
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="workshop">Workshop</SelectItem>
+                    <SelectItem value="meetup">Meetup</SelectItem>
+                    <SelectItem value="harvest">Harvest Event</SelectItem>
+                    <SelectItem value="seasonal">Seasonal</SelectItem>
+                    <SelectItem value="online">Online Event</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+              
+              <div>
+                <label className="block text-sm font-medium mb-2">Max Attendees</label>
+                <Input
+                  type="number"
+                  placeholder="Leave empty for unlimited"
+                  value={editEvent.maxAttendees}
+                  onChange={(e) => setEditEvent(prev => ({ ...prev, maxAttendees: e.target.value }))}
+                  min="1"
+                />
+              </div>
+              
+              <div>
+                <label className="block text-sm font-medium mb-2">Price</label>
+                <Input
+                  placeholder="e.g., $25 or Free"
+                  value={editEvent.price}
+                  onChange={(e) => setEditEvent(prev => ({ ...prev, price: e.target.value }))}
+                />
+              </div>
+              
+              <div>
+                <label className="block text-sm font-medium mb-2">Tags</label>
+                <Input
+                  placeholder="e.g., beginner-friendly, hands-on, inspection"
+                  value={editEvent.tags}
+                  onChange={(e) => setEditEvent(prev => ({ ...prev, tags: e.target.value }))}
+                />
+                <p className="text-xs text-muted-foreground mt-1">Separate multiple tags with commas</p>
+              </div>
+            </div>
+            
+            <div className="flex space-x-3 pt-4">
+              <Button 
+                onClick={handleUpdateEvent}
+                disabled={!editEvent.title || !editEvent.description || !editEvent.date || !editEvent.time || !editEvent.location}
+                className="flex-1 bg-gradient-to-r from-blue-600 to-blue-700 text-white hover:from-blue-700 hover:to-blue-800"
+              >
+                Update Event
+              </Button>
+              <Button 
+                variant="outline" 
+                onClick={() => {
+                  setShowEditEvent(false);
+                  setEditingEventId(null);
+                }}
+                className="flex-shrink-0"
+              >
+                Cancel
+              </Button>
+            </div>
+          </div>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }
