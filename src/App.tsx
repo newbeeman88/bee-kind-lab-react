@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Navigation } from '../components/Navigation';
+import { Footer } from '../components/Footer';
 import { HeroCarousel } from '../components/HeroCarousel';
 import { PostFeed } from '../components/PostFeed';
 import { MyPosts } from '../components/MyPosts';
@@ -246,7 +247,7 @@ export default function App() {
         return { success: false, error: 'This username is already taken' };
       }
       
-      // In a real app, password would be hashed and sent to backend
+      // In real app, password would be hashed and sent to backend
       // For now, we just verify it exists
       if (!password) {
         return { success: false, error: 'Password is required' };
@@ -261,7 +262,6 @@ export default function App() {
       return { success: false, error: 'Registration failed. Please try again.' };
     }
   };
-
 
   const handleLogout = () => {
     setUser(null);
@@ -524,36 +524,36 @@ export default function App() {
           <section className="relative">
             <div className="max-w-4xl mx-auto px-4 py-12">
               <div className="text-center mb-12">
-                <h1 className="text-4xl font-bold text-foreground mb-4" style={{ fontFamily: 'var(--font-family-heading)' }}>
-                  About The Hive Hub 🐝
+                <h1 className="text-6xl font-bold text-lime-500 mb-4" style={{ fontFamily: 'var(--font-family-heading)' }}>
+                  About The BeeKind Lab
                 </h1>
-                <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                  Welcome to the sweetest community for beekeepers! Learn, share, and grow together in our buzzing ecosystem.
+                <p className="text-lg text-sky-400 max-w-2xl mx-auto">
+                  Welcome to the sweetest community for beekeepers! <br />Learn, share, and grow together in our buzzing ecosystem.
                 </p>
               </div>
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
                 <div className="bg-card/50 backdrop-blur-sm p-6 rounded-lg border border-border/50">
-                  <h2 className="text-2xl font-bold text-foreground mb-4" style={{ fontFamily: 'var(--font-family-heading)' }}>
-                    Our Mission 🍯
+                  <h2 className="text-2xl font-bold mb-4 text-green-600" style={{ fontFamily: 'var(--font-family-heading)' }}>
+                    Our Mission 🍯  
                   </h2>
-                  <p className="text-muted-foreground leading-relaxed">
-                    The Hive Hub is dedicated to bringing together beekeepers of all experience levels to share knowledge, 
-                    celebrate successes, and support each other through challenges. From first-time hive inspections to 
-                    advanced queen rearing techniques, we're here to help you succeed.
+                  <p className="text-blue-400 leading-relaxed">
+                    The BeeKind Lab is dedicated to bringing together beekeepers of all experience levels to share knowledge, 
+                    celebrate successes, and support each other through challenges. <br /> From first-time hive inspections to 
+                    advanced queen rearing techniques, we're here to help you succeed!
                   </p>
                 </div>
                 
                 <div className="bg-card/50 backdrop-blur-sm p-6 rounded-lg border border-border/50">
-                  <h2 className="text-2xl font-bold text-foreground mb-4" style={{ fontFamily: 'var(--font-family-heading)' }}>
-                    Community Features 🌻
+                  <h2 className="text-2xl font-bold text-pink-600 mb-4" style={{ fontFamily: 'var(--font-family-heading)' }}>
+                    Features We provide
                   </h2>
-                  <ul className="text-muted-foreground space-y-2">
-                    <li>• Share your beekeeping experiences and photos</li>
-                    <li>• Join local events and workshops</li>
-                    <li>• Get help from experienced beekeepers</li>
-                    <li>• Learn from our AI beekeeping assistant</li>
-                    <li>• Connect with fellow apiarists in your area</li>
+                  <ul className="text-red-400 space-y-2">
+                    <li> - Share your beekeeping experiences and photos</li>
+                    <li> - Join local events and workshops</li>
+                    <li> - Get help from experienced beekeepers</li>
+                    <li> - Learn from our AI beekeeping assistant</li>
+                    <li> - Connect with fellow apiarists in your area</li>
                   </ul>
                 </div>
               </div>
@@ -563,7 +563,7 @@ export default function App() {
                   Join Our Sweet Community! 🏡
                 </h2>
                 <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
-                  Whether you're a seasoned beekeeper or just getting started, The Hive Hub is your home for all things beekeeping. 
+                  Whether you're a seasoned beekeeper or just getting started, The BeeKind Lab is your home for all things beekeeping. <br />
                   Join thousands of passionate apiarists sharing their knowledge and experiences.
                 </p>
                 {!isLoggedIn && (
@@ -580,7 +580,7 @@ export default function App() {
                       className="px-6 py-3 bg-gradient-to-r from-primary to-secondary text-white hover:from-primary/90 hover:to-secondary/90 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
                       style={{ fontFamily: 'var(--font-family-primary)' }}
                     >
-                      Join the Hive! 🍯
+                      Join the Lab! 🍯
                     </button>
                   </div>
                 )}
@@ -588,6 +588,7 @@ export default function App() {
             </div>
           </section>
         );
+
       case 'home':
       default:
         return (
@@ -618,7 +619,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen relative">
+    <div className="min-h-screen relative flex flex-col">
       {/* Dynamic Gradient Background - Green Nature Theme */}
       <div className="fixed inset-0 -z-10">
         {/* Base green gradient */}
@@ -645,9 +646,14 @@ export default function App() {
         user={user}
       />
       
-      <main>
+      <main className="flex-1">
         {renderCurrentPage()}
       </main>
+
+      <Footer 
+        onNavigate={handleNavigate}
+        isLoggedIn={isLoggedIn}
+      />
 
       {/* Modals and Floating Components */}
       <AuthModal

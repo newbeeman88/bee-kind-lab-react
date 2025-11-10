@@ -2,7 +2,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } f
 import { Button } from './ui/button';
 import { Copy, Check, ExternalLink } from 'lucide-react';
 import { useState } from 'react';
-import { CuteShareIcon } from './CuteIcons';
+import { SharingIcon } from './MyIcons';
 
 interface ShareModalProps {
   isOpen: boolean;
@@ -107,13 +107,17 @@ export function ShareModal({ isOpen, onClose, post }: ShareModalProps) {
       }
     },
     {
-      name: 'WeChat',
+      name: 'Line',
       icon: (
-        <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M8.691 2.188C3.891 2.188 0 5.476 0 9.53c0 2.212 1.17 4.203 3.002 5.55a.59.59 0 0 1 .213.665l-.39 1.48c-.019.07-.048.141-.048.213 0 .163.13.295.29.295a.326.326 0 0 0 .167-.054l1.903-1.114a.864.864 0 0 1 .717-.098 10.16 10.16 0 0 0 2.837.403c.276 0 .543-.027.811-.05-.857-2.578.157-4.972 1.932-6.446 1.703-1.415 3.882-1.900 5.853-1.547-.576-3.583-4.196-6.348-8.596-6.639zM5.785 5.991c.642 0 1.162.529 1.162 1.18 0 .659-.52 1.188-1.162 1.188-.642 0-1.162-.53-1.162-1.188 0-.651.52-1.18 1.162-1.18zm5.813 0c.642 0 1.162.529 1.162 1.18 0 .659-.52 1.188-1.162 1.188-.642 0-1.162-.53-1.162-1.188 0-.651.52-1.18 1.162-1.18zm2.711 6.158c0-2.859 2.579-5.203 5.854-5.203 3.274 0 5.866 2.344 5.866 5.203 0 2.861-2.592 5.204-5.866 5.204a7.378 7.378 0 0 1-2.032-.288 1.02 1.02 0 0 0-.71.074l-1.362.8a.243.243 0 0 1-.118.04c-.114 0-.207-.093-.207-.208a.25.25 0 0 1 .034-.14l.283-1.058a.505.505 0 0 0-.15-.56c-1.302-1.058-2.158-2.539-2.158-4.15-.434-.004-.434-.009-.434-.009zm1.685-1.978c-.464 0-.84.367-.84.82 0 .452.376.82.84.82.465 0 .84-.368.84-.82 0-.453-.375-.82-.84-.82zm3.704 0c-.464 0-.84.367-.84.82 0 .452.376.82.84.82.464 0 .84-.368.84-.82 0-.453-.376-.82-.84-.82z"/>
+        <svg width="800px" height="800px" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M30 14.4979C30 8.15792 23.7199 3 15.9999 3C8.28094 3 2 8.15792 2 14.4979C2 20.1817 6.98063 24.9417 13.7084 25.8418C14.1644 25.9412 14.7849 26.146 14.9419 26.5404C15.0831 26.8986 15.0342 27.4598 14.987 27.8216C14.987 27.8216 14.8227 28.8214 14.7873 29.0343C14.7264 29.3926 14.5061 30.4353 15.9999 29.7981C17.4942 29.1609 24.0626 24.9935 26.9998 21.572C29.0287 19.3204 30 17.0353 30 14.4979Z" fill="#2CCF54"/>
+        <path d="M13.1553 11.4244H12.1733C12.0228 11.4244 11.9004 11.5478 11.9004 11.6995V17.866C11.9004 18.0179 12.0228 18.1411 12.1733 18.1411H13.1553C13.3059 18.1411 13.428 18.0179 13.428 17.866V11.6995C13.428 11.5478 13.3059 11.4244 13.1553 11.4244Z" fill="white"/>
+        <path d="M19.9147 11.4244H18.9327C18.7821 11.4244 18.66 11.5478 18.66 11.6995V15.3631L15.8645 11.5467C15.8128 11.4683 15.729 11.4295 15.6375 11.4244H14.6558C14.5052 11.4244 14.3828 11.5478 14.3828 11.6995V17.866C14.3828 18.0179 14.5052 18.1411 14.6558 18.1411H15.6375C15.7883 18.1411 15.9104 18.0179 15.9104 17.866V14.2035L18.7094 18.0247C18.7597 18.0967 18.845 18.1411 18.9327 18.1411H19.9147C20.0655 18.1411 20.1874 18.0179 20.1874 17.866V11.6995C20.1874 11.5478 20.0655 11.4244 19.9147 11.4244Z" fill="white"/>
+        <path d="M10.7884 16.5969H8.12013V11.6998C8.12013 11.5476 7.99802 11.4241 7.84773 11.4241H6.86545C6.71489 11.4241 6.59277 11.5476 6.59277 11.6998V17.8652C6.59277 18.0149 6.71435 18.1411 6.86518 18.1411H10.7884C10.9389 18.1411 11.0605 18.0174 11.0605 17.8652V16.8725C11.0605 16.7203 10.9389 16.5969 10.7884 16.5969Z" fill="white"/>
+        <path d="M25.3372 12.9683C25.4878 12.9683 25.6094 12.8452 25.6094 12.6927V11.7C25.6094 11.5478 25.4878 11.4241 25.3372 11.4241H21.4143C21.2636 11.4241 21.1416 11.5501 21.1416 11.6998V17.8655C21.1416 18.0147 21.2633 18.1411 21.4137 18.1411H25.3372C25.4878 18.1411 25.6094 18.0174 25.6094 17.8655V16.8725C25.6094 16.7206 25.4878 16.5969 25.3372 16.5969H22.6692V15.5546H25.3372C25.4878 15.5546 25.6094 15.4311 25.6094 15.2789V14.2863C25.6094 14.1341 25.4878 14.0104 25.3372 14.0104H22.6692V12.9683H25.3372Z" fill="white"/>
         </svg>
       ),
-      bgColor: 'bg-[#09B83E]',
+      bgColor: 'bg-green-300',
       hoverColor: 'hover:bg-[#08A838]',
       action: () => {
         handleCopyClick();
@@ -126,47 +130,47 @@ export function ShareModal({ isOpen, onClose, post }: ShareModalProps) {
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="sm:max-w-[500px] w-[95vw] p-0 overflow-hidden bg-gradient-to-br from-[#FFFBEB] to-[#FFF8E1] border-[#FFB300]/20 shadow-2xl">
+      <DialogContent className="max-w-[95vw] sm:max-w-[90vw] md:max-w-[600px] lg:max-w-[700px] max-h-[90vh] p-0 overflow-y-auto bg-gradient-to-br from-[#FFFBEB] to-[#FFF8E1] border-[#FFB300]/20 shadow-2xl">
         {/* Header with gradient background */}
-        <div className="bg-gradient-to-r from-[#FFB300] to-[#FFA000] p-6 text-white relative overflow-hidden">
+        <div className="bg-gradient-to-r from-[#FFB300] to-[#FFA000] p-4 sm:p-6 text-white relative overflow-hidden">
           {/* Background decoration */}
-          <div className="absolute top-0 right-0 w-24 h-24 bg-white/10 rounded-full -mr-12 -mt-12"></div>
-          <div className="absolute bottom-0 left-0 w-16 h-16 bg-white/5 rounded-full -ml-8 -mb-8"></div>
+          <div className="absolute top-0 right-0 w-16 sm:w-24 h-16 sm:h-24 bg-white/10 rounded-full -mr-8 sm:-mr-12 -mt-8 sm:-mt-12"></div>
+          <div className="absolute bottom-0 left-0 w-12 sm:w-16 h-12 sm:h-16 bg-white/5 rounded-full -ml-6 sm:-ml-8 -mb-6 sm:-mb-8"></div>
           
-          <DialogHeader className="space-y-3 relative z-10">
-            <DialogTitle className="flex items-center gap-3 text-xl font-bold" style={{ fontFamily: 'var(--font-family-heading)' }}>
-              <div className="p-2 bg-white/20 rounded-xl backdrop-blur-sm hover:scale-110 transition-transform duration-300">
-                <CuteShareIcon size={24} />
+          <DialogHeader className="space-y-2 sm:space-y-3 relative z-10">
+            <DialogTitle className="flex items-center gap-2 sm:gap-3 text-lg sm:text-xl font-bold" style={{ fontFamily: 'var(--font-family-heading)' }}>
+              <div className="p-1.5 sm:p-2 bg-white/20 rounded-lg sm:rounded-xl backdrop-blur-sm hover:scale-110 transition-transform duration-300">
+                <SharingIcon size={20} className="sm:w-6 sm:h-6" />
               </div>
-              Share the Buzz! 🐝
+              <span className="truncate">Share the Buzz! 🐝</span>
             </DialogTitle>
-            <DialogDescription className="text-white/90 text-sm leading-relaxed" style={{ fontFamily: 'var(--font-family-primary)' }}>
-              Spread the sweet knowledge about "{post.title.length > 35 ? post.title.substring(0, 35) + '...' : post.title}"
+            <DialogDescription className="text-white/90 text-xs sm:text-sm leading-relaxed" style={{ fontFamily: 'var(--font-family-primary)' }}>
+              Spread the sweet knowledge about "{post.title.length > 30 ? post.title.substring(0, 30) + '...' : post.title}"
             </DialogDescription>
           </DialogHeader>
         </div>
         
-        <div className="p-6 space-y-6">
+        <div className="p-4 sm:p-6 space-y-4 sm:space-y-6">
           {/* Social Media Options */}
-          <div className="space-y-4">
-            <h3 className="font-semibold text-[#6D4C41] flex items-center gap-2" style={{ fontFamily: 'var(--font-family-heading)' }}>
+          <div className="space-y-3 sm:space-y-4">
+            <h3 className="text-sm sm:text-base font-semibold text-[#6D4C41] flex items-center gap-2" style={{ fontFamily: 'var(--font-family-heading)' }}>
               <div className="p-1 bg-gradient-to-r from-[#FFB300]/20 to-[#8BC34A]/20 rounded-lg">
-                <ExternalLink className="w-4 h-4" />
+                <ExternalLink className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
               </div>
-              Share on Social Platforms ✨
+              <span className="truncate">Share on Social Platforms ✨</span>
             </h3>
-            <div className="grid grid-cols-2 gap-3">
+            <div className="grid grid-cols-2 md:grid-cols-2 gap-2 sm:gap-3">
               {shareOptions.map((option) => (
                 <Button
                   key={option.name}
                   onClick={option.action}
-                  className={`${option.bgColor} ${option.hoverColor} text-white border-0 h-14 flex items-center justify-center gap-3 transition-all duration-300 hover:scale-105 hover:shadow-lg font-semibold rounded-2xl relative overflow-hidden group`}
+                  className={`${option.bgColor} ${option.hoverColor} text-white border-0 h-12 sm:h-14 flex items-center justify-center gap-2 sm:gap-3 transition-all duration-300 hover:scale-105 hover:shadow-lg font-semibold rounded-xl sm:rounded-2xl relative overflow-hidden group`}
                   style={{ fontFamily: 'var(--font-family-primary)' }}
                 >
                   <div className="absolute inset-0 bg-white/10 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-500"></div>
-                  <div className="relative z-10 flex items-center gap-3">
-                    {option.icon}
-                    <span className="text-sm">{option.name}</span>
+                  <div className="relative z-10 flex items-center gap-2">
+                    <div className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0">{option.icon}</div>
+                    <span className="text-xs sm:text-sm truncate">{option.name}</span>
                   </div>
                 </Button>
               ))}
@@ -174,22 +178,22 @@ export function ShareModal({ isOpen, onClose, post }: ShareModalProps) {
           </div>
           
           {/* Copy Link Section */}
-          <div className="space-y-4">
+          <div className="space-y-3 sm:space-y-4">
             <div className="flex items-center gap-2 text-[#6D4C41]">
               <div className="p-1 bg-gradient-to-r from-[#8BC34A]/20 to-[#B3E5FC]/20 rounded-lg">
-                <Copy className="w-4 h-4" />
+                <Copy className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
               </div>
-              <h3 className="font-semibold" style={{ fontFamily: 'var(--font-family-heading)' }}>Copy Sweet Link 🔗</h3>
+              <h3 className="text-sm sm:text-base font-semibold truncate" style={{ fontFamily: 'var(--font-family-heading)' }}>Copy Sweet Link 🔗</h3>
             </div>
             
-            <div className="bg-gradient-to-r from-[#FFFBEB] to-[#FFF8E1] border border-[#FFB300]/20 rounded-xl p-4 space-y-3">
-              <div className="flex items-center gap-3">
-                <div className="flex-1 bg-white/60 backdrop-blur-sm p-3 rounded-lg text-sm font-mono text-[#6D4C41] truncate border border-[#FFB300]/10">
+            <div className="bg-gradient-to-r from-[#FFFBEB] to-[#FFF8E1] border border-[#FFB300]/20 rounded-xl p-3 sm:p-4 space-y-3">
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 sm:gap-3">
+                <div className="flex-1 bg-white/60 backdrop-blur-sm p-2.5 sm:p-3 rounded-lg text-xs sm:text-sm font-mono text-[#6D4C41] truncate border border-[#FFB300]/10 min-w-0">
                   {postUrl}
                 </div>
                 <Button
                   onClick={handleCopyClick}
-                  className={`shrink-0 min-w-[90px] h-11 transition-all duration-300 rounded-lg font-medium ${
+                  className={`shrink-0 w-full sm:w-auto sm:min-w-[90px] h-10 sm:h-11 transition-all duration-300 rounded-lg font-medium ${
                     copied 
                       ? 'bg-[#8BC34A] hover:bg-[#7CB342] text-white shadow-md' 
                       : 'bg-[#FFB300] hover:bg-[#FFA000] text-[#6D4C41] shadow-md hover:shadow-lg'
@@ -198,12 +202,12 @@ export function ShareModal({ isOpen, onClose, post }: ShareModalProps) {
                   {copied ? (
                     <>
                       <Check className="w-4 h-4 mr-2" />
-                      Copied!
+                      <span className="text-xs sm:text-sm">Copied!</span>
                     </>
                   ) : (
                     <>
                       <Copy className="w-4 h-4 mr-2" />
-                      Copy
+                      <span className="text-xs sm:text-sm">Copy</span>
                     </>
                   )}
                 </Button>
@@ -212,29 +216,29 @@ export function ShareModal({ isOpen, onClose, post }: ShareModalProps) {
           </div>
           
           {/* Post Preview */}
-          <div className="space-y-3">
-            <h3 className="font-semibold text-[#6D4C41] flex items-center gap-2" style={{ fontFamily: 'var(--font-family-heading)' }}>
+          <div className="space-y-2 sm:space-y-3">
+            <h3 className="text-sm sm:text-base font-semibold text-[#6D4C41] flex items-center gap-2" style={{ fontFamily: 'var(--font-family-heading)' }}>
               <div className="p-1 bg-gradient-to-r from-[#B3E5FC]/20 to-[#FFB300]/20 rounded-lg">
                 🍯
               </div>
-              Sweet Preview
+              <span className="truncate">Sweet Preview</span>
             </h3>
-            <div className="bg-white/90 backdrop-blur-sm border border-[#FFB300]/30 rounded-2xl p-5 shadow-lg hover:shadow-xl transition-all duration-300">
-              <h4 className="font-bold text-[#6D4C41] mb-3 line-clamp-2 leading-relaxed" style={{ fontFamily: 'var(--font-family-heading)' }}>
+            <div className="bg-white/90 backdrop-blur-sm border border-[#FFB300]/30 rounded-xl sm:rounded-2xl p-4 sm:p-5 shadow-lg hover:shadow-xl transition-all duration-300">
+              <h4 className="text-sm sm:text-base font-bold text-[#6D4C41] mb-2 sm:mb-3 line-clamp-2 leading-relaxed" style={{ fontFamily: 'var(--font-family-heading)' }}>
                 {post.title}
               </h4>
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-8 h-8 bg-gradient-to-r from-[#FFB300] to-[#FFA000] rounded-full flex items-center justify-center shadow-md">
-                  <span className="text-sm font-bold text-white">{post.author.charAt(0).toUpperCase()}</span>
+              <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
+                <div className="w-7 h-7 sm:w-8 sm:h-8 bg-gradient-to-r from-[#FFB300] to-[#FFA000] rounded-full flex items-center justify-center shadow-md flex-shrink-0">
+                  <span className="text-xs sm:text-sm font-bold text-white">{post.author.charAt(0).toUpperCase()}</span>
                 </div>
-                <div>
-                  <span className="text-sm font-medium text-[#6D4C41]" style={{ fontFamily: 'var(--font-family-primary)' }}>
+                <div className="min-w-0 flex-1">
+                  <span className="text-xs sm:text-sm font-medium text-[#6D4C41] truncate block" style={{ fontFamily: 'var(--font-family-primary)' }}>
                     by {post.author}
                   </span>
-                  <div className="text-xs text-[#6D4C41]/60">🐝 Community Contributor</div>
+                  <div className="text-xs text-[#6D4C41]/60 truncate">🐝 Community Contributor</div>
                 </div>
               </div>
-              <p className="text-sm text-[#6D4C41]/70 line-clamp-3 leading-relaxed" style={{ fontFamily: 'var(--font-family-primary)' }}>
+              <p className="text-xs sm:text-sm text-[#6D4C41]/70 line-clamp-2 sm:line-clamp-3 leading-relaxed" style={{ fontFamily: 'var(--font-family-primary)' }}>
                 {shareContent}
               </p>
             </div>

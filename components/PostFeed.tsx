@@ -6,7 +6,13 @@ import { User, Calendar, ChevronUp, ChevronDown, MessageCircle, Eye } from 'luci
 import { ImageWithFallback } from './figma/ImageWithFallback';
 import { PostDetailModal } from './PostDetailModal';
 import { ShareModal } from './ShareModal';
-import { CutePlusIcon, CuteHeartIcon, CuteShareIcon } from './CuteIcons';
+
+import {
+  HeartBeatIcon,
+  SharingIcon,
+  WritePostsIcon
+
+ } from './MyIcons';
 
 interface Post {
   id: string;
@@ -134,7 +140,7 @@ export function PostFeed({ isLoggedIn, currentUser, posts, onCreatePost, onUpdat
             className="bg-gradient-to-r from-primary to-secondary text-white hover:from-primary/90 hover:to-secondary/90 font-semibold rounded-full px-6 py-3 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
             style={{ fontFamily: 'var(--font-family-primary)' }}
           >
-            <CutePlusIcon size={20} className="mr-2" />
+            <WritePostsIcon size={20} className="mr-2" />
             Share Your Buzz! 🍯
           </Button>
         )}
@@ -189,7 +195,7 @@ export function PostFeed({ isLoggedIn, currentUser, posts, onCreatePost, onUpdat
                       userLikes.has(post.id) ? 'text-red-500' : 'text-muted-foreground'
                     }`}
                   >
-                    <CuteHeartIcon size={16} className={userLikes.has(post.id) ? 'animate-pulse' : ''} />
+                    <HeartBeatIcon size={16} className={userLikes.has(post.id) ? 'animate-pulse' : ''} />
                     <span className="text-xs font-medium">{post.likes}</span>
                   </Button>
                   
@@ -239,7 +245,7 @@ export function PostFeed({ isLoggedIn, currentUser, posts, onCreatePost, onUpdat
                     onClick={() => handleShare(post)}
                     className="flex items-center space-x-1 hover:text-primary hover:bg-primary/10 text-muted-foreground"
                   >
-                    <CuteShareIcon size={16} />
+                    <SharingIcon size={16} />
                   </Button>
                 </div>
                 

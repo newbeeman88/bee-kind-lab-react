@@ -7,11 +7,12 @@ import { Badge } from './ui/badge';
 
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from './ui/dialog';
 import { MapPin, Users, Plus, Eye, Clock } from 'lucide-react';
-import { CuteCommunityIcon } from './CuteIcons';
 
 // Importing SVGs as components
 import {
   SleepyBeeIcon,
+  ThreeHivesIcon,
+
 
 } from './MyIcons';
 
@@ -181,7 +182,7 @@ export function Community({ isLoggedIn, user, onLoginClick, onRegisterClick }: C
             <div className="flex items-center space-x-4">
               <SleepyBeeIcon size={32} className="text-primary" />
               <div>
-                <h3 className="font-semibold text-foreground mb-1">Join The Hive Hub Community! 🐝</h3>
+                <h3 className="font-semibold text-foreground mb-1">Join The BeeKind Lab!</h3>
                 <p className="text-sm text-muted-foreground">
                   Sign in to join communities, attend events, and connect with fellow beekeepers.
                 </p>
@@ -192,7 +193,7 @@ export function Community({ isLoggedIn, user, onLoginClick, onRegisterClick }: C
                 Sign In
               </Button>
               <Button size="sm" onClick={onRegisterClick}>
-                Join Hive
+                Join Lab
               </Button>
             </div>
           </div>
@@ -202,9 +203,9 @@ export function Community({ isLoggedIn, user, onLoginClick, onRegisterClick }: C
       {/* Header */}
       <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-8">
         <div className="flex items-center space-x-3 mb-4 md:mb-0">
-          <CuteCommunityIcon size={32} />
+          <ThreeHivesIcon size={32} />
           <div>
-            <h1 className="text-foreground">Community Hub</h1>
+            <h1 className="text-foreground">Our Community</h1>
             <p className="text-muted-foreground">
               {isLoggedIn 
                 ? "Connect, learn, and grow together 🐝" 
@@ -225,7 +226,7 @@ export function Community({ isLoggedIn, user, onLoginClick, onRegisterClick }: C
               <DialogContent className="max-w-md">
               <DialogHeader>
                 <DialogTitle className="flex items-center space-x-2">
-                  <CuteCommunityIcon size={20} />
+                  <ThreeHivesIcon size={20} />
                   <span>Create New Community</span>
                 </DialogTitle>
               </DialogHeader>
@@ -298,7 +299,7 @@ export function Community({ isLoggedIn, user, onLoginClick, onRegisterClick }: C
       {/* Community Section Header */}
       <div className="mb-6">
         <div className="flex items-center space-x-2 p-3 bg-primary/10 rounded-lg">
-          <CuteCommunityIcon size={20} />
+          <ThreeHivesIcon size={20} />
           <h2 className="font-semibold text-foreground">
             {isLoggedIn ? 'Your Communities' : 'Discover Communities'}
           </h2>
@@ -314,7 +315,7 @@ export function Community({ isLoggedIn, user, onLoginClick, onRegisterClick }: C
                 <div className="flex items-start justify-between">
                   <div className="flex-1">
                     <CardTitle className="flex items-center space-x-2 mb-2">
-                      <CuteCommunityIcon size={20} />
+                      <ThreeHivesIcon size={20} />
                       <span className="text-lg">{community.name}</span>
                     </CardTitle>
                     <Badge variant="secondary" className="mb-2">

@@ -6,11 +6,12 @@ import { Input } from './ui/input';
 import { Textarea } from './ui/textarea';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from './ui/dialog';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './ui/select';
-import { CuteEventsIcon, CuteHeartIcon } from './CuteIcons';
 
 import {
   SleepyBeeIcon,
   HoneyJarIcon,
+  HeartBeatIcon,
+  PiuCalendarIcon,
 
 } from './MyIcons';
 
@@ -81,7 +82,7 @@ const mockEvents: Event[] = [
     type: 'meetup',
     attendees: 28,
     maxAttendees: 50,
-    organizer: 'Hive Hub Community',
+    organizer: 'BeeKind Lab Community',
     tags: ['community', 'networking', 'discussion'],
     isPublic: true,
     isAttending: false
@@ -213,9 +214,9 @@ export function Events({ isLoggedIn, user, onLoginClick, onRegisterClick }: Even
       case 'harvest':
         return <HoneyJarIcon size={16} />;
       case 'meetup':
-        return <CuteHeartIcon size={16} />;
+        return <HeartBeatIcon size={16} />;
       default:
-        return <CuteEventsIcon size={16} />;
+        return <PiuCalendarIcon size={16} />;
     }
   };
 
@@ -255,9 +256,9 @@ export function Events({ isLoggedIn, user, onLoginClick, onRegisterClick }: Even
       case 'meetup':
         return 'https://images.unsplash.com/photo-1568526381923-caf3fd520382?w=600&h=300&fit=crop';
       case 'online':
-        return 'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=600&h=300&fit=crop';
+        return 'https://plus.unsplash.com/premium_photo-1664299186917-641bf58ff5b3?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjEyfHxiZWV8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&q=60&w=900';
       case 'seasonal':
-        return 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&h=300&fit=crop';
+        return 'https://images.unsplash.com/photo-1522921575-9d14e748e6da?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjI1fHxiZWV8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&q=60&w=900';
       default:
         return 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&h=300&fit=crop';
     }
@@ -442,7 +443,7 @@ export function Events({ isLoggedIn, user, onLoginClick, onRegisterClick }: Even
       {/* Header */}
       <div className="text-center mb-12">
         <div className="flex items-center justify-center mb-4">
-          <CuteEventsIcon size={48} className="mr-3" />
+          <PiuCalendarIcon size={48} className="mr-3" />
           <div>
             <h1 className="text-4xl font-bold text-foreground mb-2" style={{ fontFamily: 'var(--font-family-heading)' }}>
               Community Events 🗓️
@@ -625,7 +626,7 @@ export function Events({ isLoggedIn, user, onLoginClick, onRegisterClick }: Even
 
       {filteredEvents.length === 0 && (
         <div className="text-center py-12">
-          <CuteEventsIcon size={64} className="mx-auto mb-4 opacity-50" />
+          <PiuCalendarIcon size={64} className="mx-auto mb-4 opacity-50" />
           <h3 className="text-xl font-medium text-foreground mb-2">
             No events found
           </h3>
@@ -659,7 +660,7 @@ export function Events({ isLoggedIn, user, onLoginClick, onRegisterClick }: Even
                 <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto modal-scroll">
                   <DialogHeader>
                     <DialogTitle className="flex items-center space-x-2">
-                      <CuteEventsIcon size={24} />
+                      <PiuCalendarIcon size={24} />
                       <span>Create New Event</span>
                     </DialogTitle>
                   </DialogHeader>

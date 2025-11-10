@@ -135,17 +135,6 @@ export function Navigation({ isLoggedIn, onLoginClick, onLogout, onRegisterClick
             ) : (
               <>
                 <button 
-                  onClick={() => onNavigate?.('about')}
-                  className={`flex items-center space-x-2 px-3 py-2 rounded-full transition-all duration-300 ${
-                    currentPage === 'about' 
-                      ? 'bg-primary/10 text-primary font-medium shadow-sm' 
-                      : 'text-foreground hover:text-primary hover:bg-primary/5'
-                  }`}
-                >
-                  <ContactCowIcon size={18} className="fill-current" />
-                  <span style={{ fontFamily: 'var(--font-family-primary)' }}>About Us</span>
-                </button>
-                <button 
                   onClick={() => onNavigate?.('community')}
                   className={`flex items-center space-x-2 px-3 py-2 rounded-full transition-all duration-300 ${
                     currentPage === 'community' 
@@ -155,6 +144,18 @@ export function Navigation({ isLoggedIn, onLoginClick, onLogout, onRegisterClick
                 >
                   <EarthCommunityIcon size={18} className="fill-current" />
                   <span style={{ fontFamily: 'var(--font-family-primary)' }}>Community</span>
+                </button>
+
+                <button 
+                  onClick={() => onNavigate?.('about')}
+                  className={`flex items-center space-x-2 px-3 py-2 rounded-full transition-all duration-300 ${
+                    currentPage === 'about' 
+                      ? 'bg-primary/10 text-primary font-medium shadow-sm' 
+                      : 'text-foreground hover:text-primary hover:bg-primary/5'
+                  }`}
+                >
+                  <ContactCowIcon size={18} className="fill-current" />
+                  <span style={{ fontFamily: 'var(--font-family-primary)' }}>About Us</span>
                 </button>
               </>
             )}
@@ -358,7 +359,7 @@ export function Navigation({ isLoggedIn, onLoginClick, onLogout, onRegisterClick
                           className="w-full bg-gradient-to-r from-primary to-secondary text-white hover:from-primary/90 hover:to-secondary/90 font-medium rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 h-12"
                           style={{ fontFamily: 'var(--font-family-primary)' }}
                         >
-                          Join the Hive! 🍯
+                          Join the Lab! 🍯
                         </Button>
                       </div>
                     </>
@@ -424,7 +425,7 @@ export function Navigation({ isLoggedIn, onLoginClick, onLogout, onRegisterClick
                     className="bg-gradient-to-r from-primary to-secondary text-white hover:from-primary/90 hover:to-secondary/90 font-medium rounded-full px-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
                     style={{ fontFamily: 'var(--font-family-primary)' }}
                   >
-                    Join the Hive! 🍯
+                    Join the Lab! 🍯
                   </Button>
                 </>
               )}

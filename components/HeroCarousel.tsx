@@ -14,21 +14,41 @@ const heroImages: CarouselImage[] = [
   {
     src: "/000001.jpg",
     alt: "Bees on flowers in sunlight",
-    title: 'Nature\'s Golden Workers 🌻',
+    title: 'Nature\'s Golden Workers',
     description: 'Beautiful bees collecting nectar from vibrant flowers'
   },
   {
     src: "/000006.jpg",
     alt: "Honeycomb close up",
-    title: 'Golden Honeycomb Architecture 🔶',
-    description: 'Marvel at nature\'s perfect hexagonal engineering'
+    title: 'So pink and so cute! ',
+    description: 'What a picture with a cute bee and beautiful flower'
   },
   {
     src: "/000007.jpg",
+    alt: "Beautiful hives",
+    title: 'Beautiful hives',
+    description: 'So golden and so beautiful. What a hive!'
+  },
+    {
+    src: "https://images.unsplash.com/photo-1586106901159-815a40383396?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTA3fHxiZWV8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&q=60&w=900",
+    alt: "Honey looks so sweet",
+    title: 'Honey looks so sweet',
+    description: 'Wanna have a try?'
+  },
+  {
+    src: "https://plus.unsplash.com/premium_photo-1681506399058-89fb8a9fc714?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTMyfHxiZWV8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&q=60&w=900",
     alt: "Beekeeper with hive",
-    title: 'The Art of Beekeeping 🥽',
-    description: 'Learning the ancient craft from experienced beekeepers'
-  }
+    title: 'The Art of Beekeeping',
+    description: 'A beekeeper is working so hard.'
+  },
+    {
+    src: "/000009.jpg",
+    alt: "The QUEEN!",
+    title: 'The QUEEN!',
+    description: 'Are you seeing the queen there?'
+  },
+
+  
 ];
 
 export function HeroCarousel() {
