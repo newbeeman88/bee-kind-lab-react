@@ -117,7 +117,7 @@ export function Footer({ onNavigate, onChatClick, isLoggedIn }: FooterProps) {
   return (
     <footer className="bg-gradient-to-r from-sky-200 via-cyan-600 to-pink-600 text-white mt-auto">
       {/* Newsletter Section */}
-      <div className="bg-gradient-to-r from-sky-200 via-cyan-500 to-pink-400 py-5 sm:py-6">
+      <div className="bg-gradient-to-r from-sky-200 via-cyan-600 to-pink-600 py-5 sm:py-6 border-b border-white/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
             <div className="text-center md:text-left">
@@ -160,6 +160,7 @@ export function Footer({ onNavigate, onChatClick, isLoggedIn }: FooterProps) {
           </div>
         </div>
       </div>
+
 
       {/* Main Footer Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
@@ -298,7 +299,7 @@ export function Footer({ onNavigate, onChatClick, isLoggedIn }: FooterProps) {
       </div>
 
       {/* Bottom Bar */}
-      <div className="border-t border-white/10">
+      <div className="border-t border-white/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
             <div className="flex items-center gap-2 text-white/60 text-sm" style={{ fontFamily: 'var(--font-family-primary)' }}>

@@ -9,11 +9,6 @@ export default defineConfig({
     react(),
     tailwindcss(),
   ],
-  css: {
-    postcss: {
-      plugins: [tailwindcss(), require('autoprefixer')],
-    },
-  },
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
