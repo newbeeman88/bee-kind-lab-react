@@ -19,10 +19,11 @@ import {
 
 interface FooterProps {
   onNavigate?: (page: string) => void;
+  onChatClick?: () => void;
   isLoggedIn?: boolean;
 }
 
-export function Footer({ onNavigate, isLoggedIn }: FooterProps) {
+export function Footer({ onNavigate, onChatClick, isLoggedIn }: FooterProps) {
   const [email, setEmail] = useState('');
   const [isSubscribing, setIsSubscribing] = useState(false);
 
@@ -66,13 +67,12 @@ export function Footer({ onNavigate, isLoggedIn }: FooterProps) {
     { label: 'Hive Management', page: 'hive-management' },
     { label: 'Honey Harvesting', page: 'honey-harvesting' },
     { label: 'Disease Prevention', page: 'disease-prevention' },
+    { label: 'Free Markets', page: 'free-markets' },
   ];
 
   const support = [
-    { label: 'Help Center', page: 'help' },
-    { label: 'FAQs', page: 'faq' },
     { label: 'Contact Us', page: 'contact' },
-    { label: 'Privacy Policy', page: 'privacy' },
+    { label: 'FAQs', page: 'faq' },
   ];
 
   const socialLinks = [
@@ -115,9 +115,9 @@ export function Footer({ onNavigate, isLoggedIn }: FooterProps) {
   ];
 
   return (
-    <footer className="bg-gradient-to-br from-[#6D4C41] via-[#5D4037] to-[#4E342E] text-white mt-auto">
+    <footer className="bg-gradient-to-r from-sky-200 via-cyan-600 to-pink-600 text-white mt-auto">
       {/* Newsletter Section */}
-      <div className="bg-gradient-to-r from-[#FFB300] via-[#FFA000] to-[#FF8F00] py-5 sm:py-6">
+      <div className="bg-gradient-to-r from-sky-200 via-cyan-400 to-pink-400 py-5 sm:py-6">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
             <div className="text-center md:text-left">
@@ -227,10 +227,10 @@ export function Footer({ onNavigate, isLoggedIn }: FooterProps) {
               {isLoggedIn && (
                 <li>
                   <button
-                    onClick={() => onNavigate?.('chat')}
+                    onClick={() => onChatClick?.()}
                     className="text-white/80 hover:text-[#FFB300] transition-colors duration-300 flex items-center gap-2 group text-sm"
                     style={{ fontFamily: 'var(--font-family-primary)' }}
-                  >
+                    >
                     <RobotHeartIcon size={16} className="group-hover:scale-110 transition-transform fill-current" />
                     <span className="group-hover:translate-x-1 transition-transform">Ask AI 🤖</span>
                   </button>
@@ -282,7 +282,7 @@ export function Footer({ onNavigate, isLoggedIn }: FooterProps) {
             <div className="space-y-2">
               <div className="flex items-start gap-2 text-white/70 text-xs">
                 <Mail className="w-4 h-4 mt-0.5 flex-shrink-0 text-[#FFB300]" />
-                <span>hello@thehivehub.com</span>
+                <span>hey@beekind.lab</span>
               </div>
               <div className="flex items-start gap-2 text-white/70 text-xs">
                 <Phone className="w-4 h-4 mt-0.5 flex-shrink-0 text-[#FFB300]" />
@@ -290,7 +290,7 @@ export function Footer({ onNavigate, isLoggedIn }: FooterProps) {
               </div>
               <div className="flex items-start gap-2 text-white/70 text-xs">
                 <MapPin className="w-4 h-4 mt-0.5 flex-shrink-0 text-[#FFB300]" />
-                <span>123 Honey Lane<br />Beeville, CA 90210</span>
+                <span>123, Beeville, CA 90210</span>
               </div>
             </div>
           </div>

@@ -652,6 +652,7 @@ export default function App() {
 
       <Footer 
         onNavigate={handleNavigate}
+        onChatClick={handleChatClick}  
         isLoggedIn={isLoggedIn}
       />
 

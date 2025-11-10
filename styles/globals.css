@@ -2,7 +2,6 @@
 
 @import "tailwindcss";
 
-/* @custom-variant dark (&:is(.dark *)); */
 
 :root {
   --font-size: 16px;
@@ -16,7 +15,7 @@
   --popover-foreground: #2E5933;
   --primary: #FFB300;
   --primary-foreground: #2E5933;
-  --secondary: #66BB6A;
+  --secondary: #15d41e22;
   --secondary-foreground: #FFFFFF;
   --muted: #C8E6C8;
   --muted-foreground: #2E5933;
@@ -132,8 +131,16 @@
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply text-foreground;
     font-family: var(--font-family-primary);
+    background: linear-gradient(135deg, #f5f7f5 0%, #f3f6ef 25%, #d5eccf 50%, #88df25 75%, #38b4ed 100%);
+    background-attachment: fixed;
+    min-height: 100vh;
+  }
+  
+  body.dark {
+    background: linear-gradient(135deg, #1B2F1B 0%, #0D1F0D 25%, #1A2520 50%, #0D1F0D 75%, #1B2F1B 100%);
+    background-attachment: fixed;
   }
   
   html {
