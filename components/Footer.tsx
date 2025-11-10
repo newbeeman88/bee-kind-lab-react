@@ -117,15 +117,15 @@ export function Footer({ onNavigate, onChatClick, isLoggedIn }: FooterProps) {
   return (
     <footer className="bg-gradient-to-r from-sky-200 via-cyan-600 to-pink-600 text-white mt-auto">
       {/* Newsletter Section */}
-      <div className="bg-gradient-to-r from-sky-200 via-cyan-400 to-pink-400 py-5 sm:py-6">
+      <div className="bg-gradient-to-r from-sky-200 via-cyan-500 to-pink-400 py-5 sm:py-6">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
             <div className="text-center md:text-left">
-              <h3 className="text-xl sm:text-2xl font-bold text-[#6D4C41] mb-2 flex items-center justify-center md:justify-start gap-2" style={{ fontFamily: 'var(--font-family-heading)' }}>
+              <h3 className="text-xl sm:text-2xl font-bold text-zinc-100 mb-2 flex items-center justify-center md:justify-start gap-2" style={{ fontFamily: 'var(--font-family-heading)' }}>
                 <HoneyJarIcon size={28} className="animate-bounce" />
-                Join Our Sweet Newsletter! 🍯
+                Join Our Sweet Newsletter! 
               </h3>
-              <p className="text-[#6D4C41]/80 text-sm sm:text-base" style={{ fontFamily: 'var(--font-family-primary)' }}>
+              <p className="text-slate-500 text-sm sm:text-base" style={{ fontFamily: 'var(--font-family-primary)' }}>
                 Get buzzing updates, beekeeping tips, and exclusive hive insights
               </p>
             </div>
@@ -135,13 +135,13 @@ export function Footer({ onNavigate, onChatClick, isLoggedIn }: FooterProps) {
                 placeholder="your@email.com"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="bg-white/95 border-white/50 text-[#6D4C41] placeholder:text-[#6D4C41]/50 focus:ring-2 focus:ring-white h-11 sm:h-12"
+                className="bg-white/95 border-white/50 text-blue-700 placeholder:text-blue-700/50 focus:ring-2 focus:ring-white h-11 sm:h-12"
                 disabled={isSubscribing}
               />
               <Button
                 type="submit"
                 disabled={isSubscribing}
-                className="bg-[#6D4C41] hover:bg-[#5D4037] text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 h-11 sm:h-12 px-6"
+                className="bg-blue-700 hover:bg-[#22e60c] text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 h-11 sm:h-12 px-6"
                 style={{ fontFamily: 'var(--font-family-primary)' }}
               >
                 {isSubscribing ? (
@@ -192,7 +192,7 @@ export function Footer({ onNavigate, onChatClick, isLoggedIn }: FooterProps) {
                   className="w-10 h-10 bg-white/10 hover:bg-[#FFB300] rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-lg group"
                   aria-label={social.name}
                 >
-                  <div className="text-white group-hover:text-[#6D4C41] transition-colors">
+                  <div className="text-white group-hover:text-blue-700 transition-colors">
                     {social.icon}
                   </div>
                 </a>
