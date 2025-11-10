@@ -9,7 +9,7 @@ import { Label } from './ui/label';
 import { Badge } from './ui/badge';
 import { Plus, User, Calendar, Edit, Trash2, X, Heart, MessageCircle, TrendingUp, Image as ImageIcon } from 'lucide-react';
 import { ImageWithFallback } from './figma/ImageWithFallback';
-import { CuteBeeIcon } from './CuteIcons';
+import { SleepyBeeIcon } from './MyIcons';
 import { toast } from 'sonner';
 
 interface Post {
@@ -101,7 +101,7 @@ export function MyPosts({ user, posts, onCreatePost, onUpdatePost, onDeletePost 
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
         <div>
           <div className="flex items-center space-x-3 mb-2">
-            <CuteBeeIcon size={40} />
+            <SleepyBeeIcon size={40} />
             <h1 className="text-4xl font-bold text-foreground" style={{ fontFamily: 'var(--font-family-heading)' }}>
               My Posts 📝
             </h1>
@@ -125,7 +125,7 @@ export function MyPosts({ user, posts, onCreatePost, onUpdatePost, onDeletePost 
           <CardContent>
             <div className="flex flex-col items-center space-y-6">
               <div className="w-24 h-24 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-full flex items-center justify-center">
-                <CuteBeeIcon size={48} />
+                <SleepyBeeIcon size={48} />
               </div>
               <div className="space-y-2">
                 <h3 className="text-2xl font-bold text-foreground" style={{ fontFamily: 'var(--font-family-heading)' }}>
@@ -266,7 +266,7 @@ export function MyPosts({ user, posts, onCreatePost, onUpdatePost, onDeletePost 
                   </>
                 ) : (
                   <>
-                    <CuteBeeIcon size={28} />
+                    <SleepyBeeIcon size={28} />
                     <span>Your Post</span>
                   </>
                 )}

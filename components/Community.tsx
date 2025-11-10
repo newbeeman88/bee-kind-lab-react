@@ -7,7 +7,13 @@ import { Badge } from './ui/badge';
 
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from './ui/dialog';
 import { MapPin, Users, Plus, Eye, Clock } from 'lucide-react';
-import { CuteBeeIcon, CuteCommunityIcon } from './CuteIcons';
+import { CuteCommunityIcon } from './CuteIcons';
+
+// Importing SVGs as components
+import {
+  SleepyBeeIcon,
+
+} from './MyIcons';
 
 
 interface User {
@@ -173,7 +179,7 @@ export function Community({ isLoggedIn, user, onLoginClick, onRegisterClick }: C
         <div className="mb-8 p-6 bg-gradient-to-r from-primary/10 to-accent/10 border border-primary/20 rounded-lg">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-4">
-              <CuteBeeIcon size={32} className="text-primary" />
+              <SleepyBeeIcon size={32} className="text-primary" />
               <div>
                 <h3 className="font-semibold text-foreground mb-1">Join The Hive Hub Community! 🐝</h3>
                 <p className="text-sm text-muted-foreground">
@@ -345,7 +351,7 @@ export function Community({ isLoggedIn, user, onLoginClick, onRegisterClick }: C
                     <span>{community.memberCount} members</span>
                   </div>
                   <div className="flex items-center space-x-2 text-muted-foreground">
-                    <CuteBeeIcon size={16} />
+                    <SleepyBeeIcon size={16} />
                     <span>Admin: {community.admin}</span>
                   </div>
                   <div className="flex items-center space-x-2 text-muted-foreground">

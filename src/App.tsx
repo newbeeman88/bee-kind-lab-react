@@ -246,6 +246,12 @@ export default function App() {
         return { success: false, error: 'This username is already taken' };
       }
       
+      // In a real app, password would be hashed and sent to backend
+      // For now, we just verify it exists
+      if (!password) {
+        return { success: false, error: 'Password is required' };
+      }
+      
       // Simulate successful registration
       setUser({ username, email });
       setIsLoggedIn(true);
@@ -255,6 +261,7 @@ export default function App() {
       return { success: false, error: 'Registration failed. Please try again.' };
     }
   };
+
 
   const handleLogout = () => {
     setUser(null);

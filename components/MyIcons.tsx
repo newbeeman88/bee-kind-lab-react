@@ -5,6 +5,110 @@ interface IconProps {
   size?: number;
 }
 
+// SleepyBeeIcon with bounce animation
+export const SleepyBeeIcon = ({ className = "", size = 24 }: IconProps) => (
+  <div className={`inline-flex items-center justify-center ${className}`} style={{ width: size, height: size }}>
+	<svg viewBox="0 0 64 64" className="w-full h-full animate-bounce" style={{ animationDuration: '2s' }}>
+	  <defs>
+		<style>
+		  {`.bee-body{fill:#fff35f;stroke:#54596e;stroke-linecap:round;stroke-linejoin:round;stroke-width:2px;}
+			.bee-line{fill:none;stroke:#54596e;stroke-linecap:round;stroke-linejoin:round;stroke-width:2px;}
+			.bee-dark{fill:#54596e;}
+			.bee-white{fill:#ffffff;stroke:#54596e;stroke-linecap:round;stroke-linejoin:round;stroke-width:2px;}
+			.bee-blue{fill:#55a6ff;stroke:#54596e;stroke-linecap:round;stroke-linejoin:round;stroke-width:2px;}
+			.bee-wing{fill:#a1b7ff;opacity:0.5;}`}
+		</style>
+	  </defs>
+	  
+	  <g id="bee">
+		<path className="bee-body" d="M48.82,29.47A2.47,2.47,0,0,1,47,27v0a16,16,0,0,0-31.95-1.27c-.68,8.77,3.75,33,29,35.27,11,1,16.34-6.8,17-14.73A16,16,0,0,0,48.82,29.47Z"/>
+		
+		<path className="bee-line" d="M9,6s10-6,17,5.81"/>
+		<path className="bee-line" d="M23.88,12.69S13,4,4,13"/>
+		
+		<circle className="bee-dark" cx="8" cy="6" r="2"/>
+		<circle className="bee-dark" cx="3" cy="13" r="2"/>
+		
+		<circle className="bee-white" cx="32" cy="26" r="5"/>
+		<circle className="bee-white" cx="22" cy="26" r="5"/>
+		
+		<path className="bee-line" d="M20,26a2,2,0,0,0,4,0"/>
+		<path className="bee-line" d="M30,26a2,2,0,0,0,4,0"/>
+		
+		<g className="animate-pulse" style={{ animationDuration: '2s', animationDelay: '0.3s' }}>
+		  <path className="bee-blue" d="M23,51.5a1.5,1.5,0,0,1-.24-3c.24,0,24.09-4,27.79-17.91a1.5,1.5,0,1,1,2.9.78C49.25,47.15,24.3,51.31,23.24,51.48Z"/>
+		  <path className="bee-blue" d="M30,57.5h-.09A1.53,1.53,0,0,1,28.28,56c0-.91.54-1.45,1.7-1.61A34.78,34.78,0,0,0,56.66,35.33a1.5,1.5,0,1,1,2.68,1.34A37.73,37.73,0,0,1,30.63,57.36,1.46,1.46,0,0,1,30,57.5Z"/>
+		</g>
+		
+		<path className="bee-body" d="M30.79,36A6.77,6.77,0,0,0,27,35a6.52,6.52,0,0,0-4,1.2"/>
+		
+		<g className="animate-pulse" style={{ animationDuration: '2.5s' }}>
+		  <path className="bee-wing" d="M57.71,21.45c3-3,3.77-7,1.79-8.95s-6-1.18-9,1.79-1.79,9-1.79,9S54.74,24.42,57.71,21.45Z"/>
+		  <path className="bee-wing" d="M55.39,25.86c3.56-.64,6.11-3.09,5.68-5.47s-3.67-3.78-7.23-3.14-5.69,5.47-5.69,5.47S51.82,26.5,55.39,25.86Z"/>
+		</g>
+	  </g>
+	  
+	  {/* Floating hearts for extra kawaii effect */}
+	  <g className="animate-ping" style={{ animationDuration: '3s' }}>
+		<path d="M 5 5 L 6 4 L 7 5 L 6 6 Z" fill="#FF8A80" opacity="0.6"/>
+	  </g>
+	  <g className="animate-ping" style={{ animationDuration: '2.5s', animationDelay: '1s' }}>
+		<path d="M 57 8 L 58 7 L 59 8 L 58 9 Z" fill="#FF8A80" opacity="0.7"/>
+	  </g>
+	  <g className="animate-ping" style={{ animationDuration: '3.5s', animationDelay: '2s' }}>
+		<path d="M 4 30 L 5 29 L 6 30 L 5 31 Z" fill="#FF8A80" opacity="0.5"/>
+	  </g>
+	  
+	  {/* Subtle sparkles */}
+	  <g className="animate-ping" style={{ animationDuration: '2.8s' }}>
+		<circle cx="10" cy="20" r="0.5" fill="#FFF59D" opacity="0.8"/>
+	  </g>
+	  <g className="animate-ping" style={{ animationDuration: '3.2s', animationDelay: '1.5s' }}>
+		<circle cx="54" cy="18" r="0.4" fill="#FFF59D" opacity="0.9"/>
+	  </g>
+	</svg>
+  </div>
+);
+
+
+export const HoneyJarIcon = ({ className = "", size = 24 }: IconProps) => (
+  <div className={`inline-flex items-center justify-center ${className}`} style={{ width: size, height: size }}>
+	<svg viewBox="0 0 55.933 55.933" className="w-full h-full">
+	  <g>
+		<path style={{ fill: '#DAE7EF' }} d="M36.586,16.355v-0.422h1c1.1,0,2-0.9,2-2v-2c0-0.594-0.267-1.123-0.682-1.49l-5.147-0.51H15.586
+		  c-1.1,0-2,0.9-2,2v2c0,1.1,0.9,2,2,2h1v0.422c0,3.89-7,1.828-7,9v22.194c0,4.63,3.753,8.383,8.383,8.383h8.617h8.617
+		  c4.63,0,8.383-3.753,8.383-8.383V25.355C43.586,18.183,36.586,20.245,36.586,16.355z"/>
+		<g className="animate-bounce" style={{ animationDuration: '3s' }}>
+		  <path style={{ fill: '#FBD490' }} d="M45.761,3.414l-19.17,19.17l-2.828-2.828l19.17-19.17c0.781-0.781,2.047-0.781,2.828,0v0
+			C46.542,1.367,46.542,2.633,45.761,3.414z"/>
+		</g>
+		<path style={{ fill: '#F9DA49' }} d="M17.969,55.933h8.617h8.617c4.63,0,8.383-3.753,8.383-8.383V37.313
+		  c-4.188,3.227-6.986,3.618-11.174,0.391c-4.188-3.227-7.225-3.904-11.413-0.677c-4.188,3.227-7.225,3.904-11.413,0.677v9.845
+		  C9.586,52.179,13.339,55.933,17.969,55.933z"/>
+		<circle style={{ fill: '#EEAF4B', animationDuration: '2s' }} cx="30.586" cy="47.933" r="1" className="animate-pulse"/>
+		<g className="animate-pulse" style={{ animationDuration: '2.5s', animationDelay: '0.5s' }}>
+		  <path style={{ fill: '#FBD490' }} d="M24.382,30.622L24.382,30.622c-0.972,0.972-2.563,0.972-3.536,0l-4.95-4.95
+			c-0.972-0.972-0.972-2.563,0-3.536l0,0c0.972-0.972,2.563-0.972,3.536,0l4.95,4.95C25.354,28.059,25.354,29.65,24.382,30.622z"/>
+		</g>
+		<path style={{ fill: '#EEAF4B' }} d="M19.786,33.097L19.786,33.097c-0.972,0.972-2.563,0.972-3.536,0l-2.828-2.828
+		  c-0.972-0.972-0.972-2.563,0-3.536l0,0c0.972-0.972,2.563-0.972,3.536,0l2.828,2.828C20.758,30.534,20.758,32.125,19.786,33.097z"
+		  />
+		<path style={{ fill: '#EEAF4B' }} d="M26.776,26.106L26.776,26.106c-0.972,0.972-2.563,0.972-3.536,0l-2.828-2.828
+		  c-0.972-0.972-0.972-2.563,0-3.536l0,0c0.972-0.972,2.563-0.972,3.536,0l2.828,2.828C27.749,23.543,27.749,25.134,26.776,26.106z"
+		  />
+		<circle style={{ fill: '#EEAF4B', animationDuration: '2.2s', animationDelay: '0.3s'}} cx="27.586" cy="51.933" r="1" className="animate-pulse"/>
+		<circle style={{ fill: '#EEAF4B', animationDuration: '2.4s', animationDelay: '0.6s' }} cx="33.586" cy="50.933" r="1" className="animate-pulse"/>
+		<circle style={{ fill: '#EEAF4B', animationDuration: '2.6s', animationDelay: '0.9s' }} cx="37.586" cy="48.933" r="1" className="animate-pulse"/>
+		<polygon style={{ fill: '#EEAF4B' }} points="15.468,49.869 14.35,47.933 15.468,45.996 17.704,45.996 18.822,47.933 17.704,49.869"/>
+		<polygon style={{ fill: '#EEAF4B' }} points="21.468,45.806 20.35,43.869 21.468,41.933 23.704,41.933 24.822,43.869 23.704,45.806"/>
+	  </g>
+	</svg>
+  </div>
+);
+
+
+
+
 export const WritePostsIcon = ({ className = "", size = 24 }: IconProps) => (
   <svg 
     height={size} 
@@ -372,11 +476,13 @@ export const RobotHeartIcon = ({ className = "", size = 24 }: IconProps) => (
 );
 
 export default {
-  WritePostsIcon,
-  RobotHeartIcon,
-  EventsBeeIcon,
-  EarthCommunityIcon,
-  ContactCowIcon,
-  BeeHiveIcon,
+	SleepyBeeIcon,
+	HoneyJarIcon,
+	WritePostsIcon,
+	RobotHeartIcon,
+	EventsBeeIcon,
+	EarthCommunityIcon,
+	ContactCowIcon,
+	BeeHiveIcon,
 }; 
 

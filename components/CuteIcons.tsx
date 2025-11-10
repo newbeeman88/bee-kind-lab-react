@@ -5,119 +5,6 @@ interface IconProps {
   size?: number;
 }
 
-// Cute kawaii-style bee icon inspired by the reference image
-export const CuteBeeIcon = ({ className = "", size = 24 }: IconProps) => (
-  <div className={`inline-flex items-center justify-center ${className}`} style={{ width: size, height: size }}>
-    <svg viewBox="0 0 24 24" fill="none" className="w-full h-full animate-bounce" style={{ animationDuration: '2s' }}>
-      <defs>
-        {/* Soft gradients for kawaii style */}
-        <linearGradient id="kawaiiBeeBody" x1="0%" y1="0%" x2="0%" y2="100%">
-          <stop offset="0%" stopColor="#FFF59D"/>
-          <stop offset="50%" stopColor="#FFB300"/>
-          <stop offset="100%" stopColor="#FFA000"/>
-        </linearGradient>
-        <linearGradient id="kawaiiBeeHead" x1="0%" y1="0%" x2="0%" y2="100%">
-          <stop offset="0%" stopColor="#FFF59D"/>
-          <stop offset="100%" stopColor="#FFB300"/>
-        </linearGradient>
-        <radialGradient id="kawaiiBeeWing" cx="30%" cy="30%" r="60%">
-          <stop offset="0%" stopColor="#E1F5FE" stopOpacity="0.9"/>
-          <stop offset="60%" stopColor="#B3E5FC" stopOpacity="0.8"/>
-          <stop offset="100%" stopColor="#81D4FA" stopOpacity="0.7"/>
-        </radialGradient>
-        <filter id="softGlow" x="-20%" y="-20%" width="140%" height="140%">
-          <feGaussianBlur in="SourceAlpha" stdDeviation="0.5"/>
-          <feOffset dx="0" dy="1" result="offset"/>
-          <feFlood floodColor="#FFB300" floodOpacity="0.2"/>
-          <feComposite in2="offset" operator="in"/>
-          <feMerge>
-            <feMergeNode/>
-            <feMergeNode in="SourceGraphic"/>
-          </feMerge>
-        </filter>
-      </defs>
-      
-      {/* Kawaii bee body - round and soft */}
-      <ellipse cx="12" cy="14" rx="4" ry="5.5" fill="url(#kawaiiBeeBody)" stroke="#FFA000" strokeWidth="0.5" filter="url(#softGlow)"/>
-      
-      {/* Kawaii head - perfectly round */}
-      <circle cx="12" cy="7.5" r="4" fill="url(#kawaiiBeeHead)" stroke="#FFA000" strokeWidth="0.5" filter="url(#softGlow)"/>
-      
-      {/* Soft bee stripes - rounded edges */}
-      <ellipse cx="12" cy="11.5" rx="3.5" ry="1.2" fill="#8D6E63" opacity="0.8"/>
-      <ellipse cx="12" cy="14.5" rx="3.8" ry="1.2" fill="#8D6E63" opacity="0.8"/>
-      <ellipse cx="12" cy="17.5" rx="3.2" ry="1.2" fill="#8D6E63" opacity="0.8"/>
-      
-      {/* Kawaii wings - soft and rounded */}
-      <ellipse cx="8.5" cy="9" rx="2.5" ry="4" fill="url(#kawaiiBeeWing)" transform="rotate(-15 8.5 9)" className="animate-pulse" style={{ animationDuration: '2s' }}/>
-      <ellipse cx="15.5" cy="9" rx="2.5" ry="4" fill="url(#kawaiiBeeWing)" transform="rotate(15 15.5 9)" className="animate-pulse" style={{ animationDuration: '2s', animationDelay: '0.3s' }}/>
-      
-      {/* Wing details - subtle */}
-      <ellipse cx="8.5" cy="9" rx="1.8" ry="3" fill="white" opacity="0.3" transform="rotate(-15 8.5 9)"/>
-      <ellipse cx="15.5" cy="9" rx="1.8" ry="3" fill="white" opacity="0.3" transform="rotate(15 15.5 9)"/>
-      
-      {/* Kawaii closed/sleepy eyes */}
-      <path d="M 9.5 7 Q 10.5 6.5 11.5 7" stroke="#8D6E63" strokeWidth="1.2" fill="none" strokeLinecap="round"/>
-      <path d="M 12.5 7 Q 13.5 6.5 14.5 7" stroke="#8D6E63" strokeWidth="1.2" fill="none" strokeLinecap="round"/>
-      
-      {/* Small eye highlights for extra cuteness */}
-      <circle cx="10" cy="6.8" r="0.3" fill="white" opacity="0.8"/>
-      <circle cx="14" cy="6.8" r="0.3" fill="white" opacity="0.8"/>
-      
-      {/* Kawaii smile */}
-      <path d="M 10.5 8.5 Q 12 9.2 13.5 8.5" stroke="#8D6E63" strokeWidth="0.8" fill="none" strokeLinecap="round"/>
-      
-      {/* Cute blushing cheeks */}
-      <circle cx="8.5" cy="8" r="0.8" fill="#FFB74D" opacity="0.4"/>
-      <circle cx="15.5" cy="8" r="0.8" fill="#FFB74D" opacity="0.4"/>
-      
-      {/* Simple kawaii antennae */}
-      <line x1="10.5" y1="4" x2="10" y2="2.5" stroke="#8D6E63" strokeWidth="1" strokeLinecap="round"/>
-      <line x1="13.5" y1="4" x2="14" y2="2.5" stroke="#8D6E63" strokeWidth="1" strokeLinecap="round"/>
-      
-      {/* Round antennae tips */}
-      <circle cx="10" cy="2.5" r="0.6" fill="#8D6E63"/>
-      <circle cx="14" cy="2.5" r="0.6" fill="#8D6E63"/>
-      
-      {/* Optional kawaii flower like in reference image */}
-      <g transform="translate(18, 16) scale(0.6)">
-        {/* Flower petals */}
-        <circle cx="0" cy="-2" r="1.2" fill="white"/>
-        <circle cx="1.7" cy="-1" r="1.2" fill="white"/>
-        <circle cx="1.7" cy="1" r="1.2" fill="white"/>
-        <circle cx="0" cy="2" r="1.2" fill="white"/>
-        <circle cx="-1.7" cy="1" r="1.2" fill="white"/>
-        <circle cx="-1.7" cy="-1" r="1.2" fill="white"/>
-        
-        {/* Flower center */}
-        <circle cx="0" cy="0" r="0.8" fill="#FFB300"/>
-        
-        {/* Flower stem */}
-        <line x1="0" y1="2" x2="0" y2="4" stroke="#4CAF50" strokeWidth="0.8" strokeLinecap="round"/>
-      </g>
-      
-      {/* Floating hearts for extra kawaii effect */}
-      <g className="animate-ping" style={{ animationDuration: '3s' }}>
-        <path d="M 5 5 L 5.3 4.7 L 5.6 5 L 5.3 5.3 Z" fill="#FF8A80" opacity="0.6"/>
-      </g>
-      <g className="animate-ping" style={{ animationDuration: '2.5s', animationDelay: '1s' }}>
-        <path d="M 19 4 L 19.3 3.7 L 19.6 4 L 19.3 4.3 Z" fill="#FF8A80" opacity="0.7"/>
-      </g>
-      <g className="animate-ping" style={{ animationDuration: '3.5s', animationDelay: '2s' }}>
-        <path d="M 4 12 L 4.3 11.7 L 4.6 12 L 4.3 12.3 Z" fill="#FF8A80" opacity="0.5"/>
-      </g>
-      
-      {/* Subtle sparkles */}
-      <g className="animate-ping" style={{ animationDuration: '2.8s' }}>
-        <circle cx="6.5" cy="9" r="0.2" fill="#FFF59D" opacity="0.8"/>
-      </g>
-      <g className="animate-ping" style={{ animationDuration: '3.2s', animationDelay: '1.5s' }}>
-        <circle cx="17.5" cy="7" r="0.15" fill="#FFF59D" opacity="0.9"/>
-      </g>
-    </svg>
-  </div>
-);
-
 // Cute heart icon with pulse animation
 export const CuteHeartIcon = ({ className = "", size = 24 }: IconProps) => (
   <div className={`inline-flex items-center justify-center ${className}`} style={{ width: size, height: size }}>
@@ -141,72 +28,7 @@ export const CuteHeartIcon = ({ className = "", size = 24 }: IconProps) => (
   </div>
 );
 
-// Cute chat bubble with smile
-export const CuteChatIcon = ({ className = "", size = 24 }: IconProps) => (
-  <div className={`inline-flex items-center justify-center ${className}`} style={{ width: size, height: size }}>
-    <svg viewBox="0 0 24 24" fill="none" className="w-full h-full">
-      {/* Chat bubble */}
-      <path 
-        d="M12 2C17.5 2 22 6.5 22 12c0 5.5-4.5 10-10 10-1.5 0-3-.3-4.3-.9L2 22l1.9-5.7C3.3 15 3 13.5 3 12 3 6.5 7.5 2 12 2z" 
-        fill="url(#chatGradient)"
-        stroke="#8BC34A" 
-        strokeWidth="0.5"
-      />
-      <defs>
-        <linearGradient id="chatGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#8BC34A"/>
-          <stop offset="100%" stopColor="#66BB6A"/>
-        </linearGradient>
-      </defs>
-      {/* Eyes */}
-      <circle cx="9" cy="10" r="1" fill="#6D4C41"/>
-      <circle cx="15" cy="10" r="1" fill="#6D4C41"/>
-      <circle cx="9.3" cy="9.7" r="0.3" fill="white"/>
-      <circle cx="15.3" cy="9.7" r="0.3" fill="white"/>
-      {/* Smile */}
-      <path d="M 8 13 Q 12 16 16 13" stroke="#6D4C41" strokeWidth="1" fill="none" strokeLinecap="round"/>
-      {/* Blush */}
-      <circle cx="6.5" cy="12" r="1" fill="#FFB300" fillOpacity="0.3"/>
-      <circle cx="17.5" cy="12" r="1" fill="#FFB300" fillOpacity="0.3"/>
-    </svg>
-  </div>
-);
 
-// Cute honey pot icon
-export const CuteHoneyIcon = ({ className = "", size = 24 }: IconProps) => (
-  <div className={`inline-flex items-center justify-center ${className}`} style={{ width: size, height: size }}>
-    <svg viewBox="0 0 24 24" fill="none" className="w-full h-full">
-      {/* Honey pot */}
-      <path 
-        d="M8 8 L8 18 Q8 20 10 20 L14 20 Q16 20 16 18 L16 8 Z" 
-        fill="url(#honeyGradient)"
-        stroke="#FF8F00" 
-        strokeWidth="0.5"
-      />
-      {/* Lid */}
-      <rect x="7" y="6" width="10" height="3" rx="1" fill="#6D4C41"/>
-      {/* Handle */}
-      <ellipse cx="12" cy="6" rx="1.5" ry="0.5" fill="#6D4C41"/>
-      {/* Honey drip */}
-      <path 
-        d="M 12 4 Q 12 2 13 2 Q 14 2 14 3 Q 14 4 13 4 Q 12 4 12 4" 
-        fill="#FFB300" 
-        className="animate-bounce"
-        style={{ animationDuration: '3s' }}
-      />
-      <defs>
-        <linearGradient id="honeyGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-          <stop offset="0%" stopColor="#FFD54F"/>
-          <stop offset="100%" stopColor="#FFB300"/>
-        </linearGradient>
-      </defs>
-      {/* Cute face */}
-      <circle cx="10.5" cy="12" r="0.5" fill="#6D4C41"/>
-      <circle cx="13.5" cy="12" r="0.5" fill="#6D4C41"/>
-      <path d="M 10 14 Q 12 15.5 14 14" stroke="#6D4C41" strokeWidth="0.5" fill="none" strokeLinecap="round"/>
-    </svg>
-  </div>
-);
 
 // Cute share icon with sparkles
 export const CuteShareIcon = ({ className = "", size = 24 }: IconProps) => (
@@ -252,37 +74,55 @@ export const CuteShareIcon = ({ className = "", size = 24 }: IconProps) => (
   </div>
 );
 
-// Cute settings gear with sparkles
 export const CuteSettingsIcon = ({ className = "", size = 24 }: IconProps) => (
   <div className={`inline-flex items-center justify-center ${className}`} style={{ width: size, height: size }}>
-    <svg viewBox="0 0 24 24" fill="none" className="w-full h-full">
-      {/* Gear */}
-      <g className="animate-spin" style={{ animationDuration: '8s', transformOrigin: '12px 12px' }}>
-        <path 
-          d="M12 2l1.5 3h3l-1.5 3 1.5 3h-3L12 14l-1.5-3h-3l1.5-3L7.5 5h3L12 2z M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8z" 
-          fill="url(#settingsGradient)" 
-          stroke="#6D4C41" 
-          strokeWidth="0.5"
-        />
+    <svg viewBox="0 0 512 512" className="w-full h-full">
+      <g transform="translate(1 1)">
+        <g className="animate-spin" style={{ animationDuration: '8s', transformOrigin: '255px 255px' }}>
+          <path style={{ fill: '#63D3FD' }} d="M255,127H75.8l29.867,234.667c2.56,17.067,17.067,29.867,34.133,29.867H255h114.347
+            c17.067,0,32.427-12.8,34.133-29.867L434.2,127H255z"/>
+          <path style={{ fill: '#FFE100' }} d="M434.2,127H75.8c-9.387,0-17.067-7.68-17.067-17.067s7.68-17.067,17.067-17.067h358.4
+            c9.387,0,17.067,7.68,17.067,17.067S443.587,127,434.2,127"/>
+          <path style={{ fill: '#FFA800' }} d="M425.667,109.933c0-9.387-7.68-17.067-17.067-17.067h25.6c9.387,0,17.067,7.68,17.067,17.067
+            S443.587,127,434.2,127h-25.6C417.987,127,425.667,119.32,425.667,109.933"/>
+          <path style={{ fill: '#FFFFFF' }} d="M84.333,109.933c0-9.387,7.68-17.067,17.067-17.067H75.8c-9.387,0-17.067,7.68-17.067,17.067
+            S66.413,127,75.8,127h25.6C92.013,127,84.333,119.32,84.333,109.933"/>
+          <path style={{ fill: '#FFE100' }} d="M393.24,92.867c-28.16-18.773-54.613-40.96-79.36-64C299.373,16.067,278.893,7.533,255,7.533
+            s-44.373,8.533-58.88,21.333c-24.747,23.04-51.2,45.227-79.36,64H393.24z"/>
+          <path style={{ fill: '#FFA800' }} d="M312.173,28.867c-13.653-12.8-34.987-21.333-58.88-21.333c-5.973,0-11.093,0.853-16.213,1.707
+            c17.067,2.56,31.573,10.24,42.667,19.627c24.747,23.04,51.2,45.227,79.36,64h32.427C363.373,74.093,336.92,51.907,312.173,28.867"/>
+          <path style={{ fill: '#FFFFFF' }} d="M196.973,28.867c14.507-12.8,34.987-21.333,58.88-21.333c5.973,0,11.093,0.853,16.213,1.707
+            C255,11.8,240.493,19.48,229.4,28.867c-24.747,23.04-51.2,45.227-79.36,64h-32.427C145.773,74.093,172.227,51.907,196.973,28.867"/>
+        </g>
+        
+        <g className="animate-pulse" style={{ animationDuration: '2s' }}>
+          <path style={{ fill: '#FFE100' }} d="M255,306.2c-11.947,0-23.893-2.56-34.133-6.827V357.4c0,18.773,15.36,34.133,34.133,34.133
+            s34.133-15.36,34.133-34.133v-58.027C278.893,303.64,266.947,306.2,255,306.2"/>
+          <path style={{ fill: '#FFE100' }} d="M289.133,349.72v7.68c0,18.773-15.36,34.133-34.133,34.133s-34.133-15.36-34.133-34.133v-7.68
+            c-76.8,8.533-136.533,73.387-136.533,152.747l0,0h341.333l0,0C425.667,423.107,365.933,358.253,289.133,349.72"/>
+        </g>
+        
+        <path style={{ fill: '#FFA800' }} d="M289.133,349.72v5.12c64,18.773,110.933,77.653,110.933,147.627l0,0h25.6l0,0
+          C425.667,423.107,365.933,358.253,289.133,349.72"/>
+        <path style={{ fill: '#FFFFFF' }} d="M220.867,349.72v5.12c-64,18.773-110.933,77.653-110.933,147.627l0,0h-25.6l0,0
+          C84.333,423.107,144.067,358.253,220.867,349.72"/>
+        <path style={{ fill: '#63D3FD' }} d="M348.867,502.467H161.133v-41.813c0-14.507,11.947-26.453,26.453-26.453h134.827
+          c14.507,0,26.453,11.947,26.453,26.453V502.467z"/>
+        <path style={{ fill: '#3DB9F9' }} d="M322.413,434.2h-25.6c14.507,0,26.453,11.947,26.453,26.453v41.813h25.6v-41.813
+          C348.867,446.147,336.92,434.2,322.413,434.2"/>
+        
+        <g className="animate-pulse" style={{ animationDuration: '2.5s', animationDelay: '0.5s' }}>
+          <path style={{ fill: '#FDCC00' }} d="M348.867,161.133c-3.413,0-5.973,0.853-8.533,1.707v47.787c2.56,0.853,5.12,1.707,8.533,1.707
+            c14.507,0,25.6-11.093,25.6-25.6C374.467,172.227,363.373,161.133,348.867,161.133"/>
+          <path style={{ fill: '#FDCC00' }} d="M161.133,212.333c3.413,0,5.973-0.853,8.533-1.707V162.84c-2.56-0.853-5.12-1.707-8.533-1.707
+            c-14.507,0-25.6,11.093-25.6,25.6C135.533,201.24,146.627,212.333,161.133,212.333"/>
+          <path style={{ fill: '#FDCC00' }} d="M173.933,127c-2.56,7.68-4.267,17.067-4.267,25.6v68.267c0,46.933,38.4,85.333,85.333,85.333
+            s85.333-38.4,85.333-85.333V152.6c0-8.533-1.707-17.92-4.267-25.6H173.933z"/>
+        </g>
+        
+        <path style={{ fill: '#FFA800' }} d="M336.067,127h-25.6c2.56,7.68,4.267,17.067,4.267,25.6v68.267c0,42.667-31.573,78.507-72.533,84.48
+          c4.267,0.853,8.533,0.853,12.8,0.853c46.933,0,85.333-38.4,85.333-85.333V152.6C340.333,144.067,338.627,134.68,336.067,127"/>
       </g>
-      {/* Center circle */}
-      <circle cx="12" cy="12" r="3" fill="url(#centerGradient)" stroke="#6D4C41" strokeWidth="0.5"/>
-      {/* Cute face */}
-      <circle cx="11" cy="11" r="0.4" fill="#6D4C41"/>
-      <circle cx="13" cy="11" r="0.4" fill="#6D4C41"/>
-      <path d="M 10.5 13 Q 12 14 13.5 13" stroke="#6D4C41" strokeWidth="0.4" fill="none" strokeLinecap="round"/>
-      
-      <defs>
-        <linearGradient id="settingsGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#FFB300"/>
-          <stop offset="50%" stopColor="#8BC34A"/>
-          <stop offset="100%" stopColor="#B3E5FC"/>
-        </linearGradient>
-        <linearGradient id="centerGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#FFFBEB"/>
-          <stop offset="100%" stopColor="#FFF8E1"/>
-        </linearGradient>
-      </defs>
     </svg>
   </div>
 );
@@ -484,10 +324,7 @@ export const CuteEventsIcon = ({ className = "", size = 24 }: IconProps) => (
 );
 
 export default {
-  CuteBeeIcon,
   CuteHeartIcon,
-  CuteChatIcon,
-  CuteHoneyIcon,
   CuteShareIcon,
   CuteSettingsIcon,
   CutePlusIcon,

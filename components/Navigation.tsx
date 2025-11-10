@@ -4,9 +4,11 @@ import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger, DropdownMenuSeparator } from './ui/dropdown-menu';
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from './ui/sheet';
 import { User, LogOut, Menu } from 'lucide-react';
-import { CuteBeeIcon, CuteSettingsIcon, CuteHoneyIcon } from './CuteIcons';
 
+// Importing SVGs as components
 import {
+  SleepyBeeIcon,
+  HoneyJarIcon,
   WritePostsIcon,
   RobotHeartIcon,
   EventsBeeIcon,
@@ -59,10 +61,8 @@ export function Navigation({ isLoggedIn, onLoginClick, onLogout, onRegisterClick
           {/* Logo */}
           <div className="flex items-center space-x-3 cursor-pointer group" onClick={() => onNavigate?.('home')}>
             <div className="relative">
-              <CuteBeeIcon size={32} className="group-hover:scale-110 transition-transform duration-300" />
-              <div className="absolute -top-1 -right-1">
-                <CuteHoneyIcon size={14} className="animate-bounce [animationDelay: '1s']" />
-              </div>
+              <SleepyBeeIcon size={32} className="group-hover:scale-110 transition-transform duration-300" />
+
             </div>
             <div className="flex flex-col">
               <span className="text-xl font-bold text-foreground tracking-tight" style={{ fontFamily: 'var(--font-family-heading)' }}>
@@ -182,7 +182,7 @@ export function Navigation({ isLoggedIn, onLoginClick, onLogout, onRegisterClick
                   <DropdownMenuContent align="end" className="w-52 z-50 p-2">
                     <div className="px-3 py-2 bg-gradient-to-r from-primary/10 to-secondary/10 rounded-lg mb-2">
                       <div className="flex items-center space-x-2">
-                        <CuteBeeIcon size={16} />
+                        <SleepyBeeIcon size={16} />
                         <div>
                           <p className="font-medium text-sm" style={{ fontFamily: 'var(--font-family-heading)' }}>
                             {user?.username || 'Busy Bee'} 🐝
@@ -193,13 +193,10 @@ export function Navigation({ isLoggedIn, onLoginClick, onLogout, onRegisterClick
                     </div>
                     <DropdownMenuSeparator />
                     <DropdownMenuItem onClick={() => handleMobileNavigation('account-settings')} className="cursor-pointer">
-                      <CuteSettingsIcon size={16} className="mr-2" />
+                      <HoneyJarIcon size={16} className="mr-2" />
                       <span style={{ fontFamily: 'var(--font-family-primary)' }}>Account Settings</span>
                     </DropdownMenuItem>
-                    <DropdownMenuItem className="cursor-pointer">
-                      <CuteHoneyIcon size={16} className="mr-2" />
-                      <span style={{ fontFamily: 'var(--font-family-primary)' }}>My Profile</span>
-                    </DropdownMenuItem>
+
                     <DropdownMenuSeparator />
                     <DropdownMenuItem onClick={() => handleMobileAction(onLogout)} className="cursor-pointer text-destructive">
                       <LogOut className="w-4 h-4 mr-2" />
@@ -222,16 +219,13 @@ export function Navigation({ isLoggedIn, onLoginClick, onLogout, onRegisterClick
                 <SheetHeader className="p-6 border-b border-border">
                   <SheetTitle className="flex items-center space-x-3">
                     <div className="relative">
-                      <CuteBeeIcon size={28} />
-                      <div className="absolute -top-1 -right-1">
-                        <CuteHoneyIcon size={12} className="animate-bounce" />
-                      </div>
+                      <SleepyBeeIcon size={28} />
                     </div>
                     <div className="flex flex-col items-start">
                       <span className="text-lg font-bold text-foreground tracking-tight" style={{ fontFamily: 'var(--font-family-heading)' }}>
                         BeeKind Lab
                       </span>
-                      <span className="text-xs text-muted-foreground font-medium -mt-1">Sweet Community 🍯</span>
+                      <span className="text-xs text-muted-foreground font-medium -mt-1">BeeKind & BeeNice 🍯</span>
                     </div>
                   </SheetTitle>
                 </SheetHeader>
@@ -393,7 +387,7 @@ export function Navigation({ isLoggedIn, onLoginClick, onLogout, onRegisterClick
                   <DropdownMenuContent align="end" className="w-52 z-50 p-2">
                     <div className="px-3 py-2 bg-gradient-to-r from-primary/10 to-secondary/10 rounded-lg mb-2">
                       <div className="flex items-center space-x-2">
-                        <CuteBeeIcon size={16} />
+                        <SleepyBeeIcon size={16} />
                         <div>
                           <p className="font-medium text-sm" style={{ fontFamily: 'var(--font-family-heading)' }}>
                             {user?.username || 'Busy Bee'} 🐝
@@ -404,13 +398,10 @@ export function Navigation({ isLoggedIn, onLoginClick, onLogout, onRegisterClick
                     </div>
                     <DropdownMenuSeparator />
                     <DropdownMenuItem onClick={() => onNavigate?.('account-settings')} className="cursor-pointer">
-                      <CuteSettingsIcon size={16} className="mr-2" />
+                      <HoneyJarIcon size={16} className="mr-2" />
                       <span style={{ fontFamily: 'var(--font-family-primary)' }}>Account Settings</span>
                     </DropdownMenuItem>
-                    <DropdownMenuItem className="cursor-pointer">
-                      <CuteHoneyIcon size={16} className="mr-2" />
-                      <span style={{ fontFamily: 'var(--font-family-primary)' }}>My Profile</span>
-                    </DropdownMenuItem>
+
                     <DropdownMenuSeparator />
                     <DropdownMenuItem onClick={onLogout} className="cursor-pointer text-destructive">
                       <LogOut className="w-4 h-4 mr-2" />

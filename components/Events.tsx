@@ -6,7 +6,14 @@ import { Input } from './ui/input';
 import { Textarea } from './ui/textarea';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from './ui/dialog';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './ui/select';
-import { CuteBeeIcon, CuteEventsIcon, CuteHoneyIcon, CuteHeartIcon } from './CuteIcons';
+import { CuteEventsIcon, CuteHeartIcon } from './CuteIcons';
+
+import {
+  SleepyBeeIcon,
+  HoneyJarIcon,
+
+} from './MyIcons';
+
 import { Calendar, MapPin, Clock, Users, ChevronRight, Plus, Edit, Upload, X, Image as ImageIcon } from 'lucide-react';
 import { toast } from 'sonner';
 import { ImageWithFallback } from './figma/ImageWithFallback';
@@ -202,9 +209,9 @@ export function Events({ isLoggedIn, user, onLoginClick, onRegisterClick }: Even
   const getEventTypeIcon = (type: string) => {
     switch (type) {
       case 'workshop':
-        return <CuteBeeIcon size={16} />;
+        return <SleepyBeeIcon size={16} />;
       case 'harvest':
-        return <CuteHoneyIcon size={16} />;
+        return <HoneyJarIcon size={16} />;
       case 'meetup':
         return <CuteHeartIcon size={16} />;
       default:
@@ -632,7 +639,7 @@ export function Events({ isLoggedIn, user, onLoginClick, onRegisterClick }: Even
       <div className="mt-16">
         <Card className="bg-gradient-to-br from-primary/5 via-secondary/5 to-accent/5 border-primary/20">
           <CardContent className="text-center py-8">
-            <CuteBeeIcon size={48} className="mx-auto mb-4" />
+            <SleepyBeeIcon size={48} className="mx-auto mb-4" />
             <h3 className="text-2xl font-bold text-foreground mb-3" style={{ fontFamily: 'var(--font-family-heading)' }}>
               Organize Your Own Event! 🎉
             </h3>
