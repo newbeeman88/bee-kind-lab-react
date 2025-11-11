@@ -626,35 +626,57 @@ export default function App() {
 
   return (
     <div className="min-h-screen relative flex flex-col">
-      {/* Dynamic Gradient Background - Green Nature Theme */}
-      <div className="fixed inset-0 -z-10">
+      {/* Enhanced Animated Background with Forest Theme */}
+      <div className="fixed inset-0 -z-10 overflow-hidden">
         {isDarkMode ? (
           <>
-            {/* Dark mode gradient */}
-            <div className="absolute inset-0 bg-gradient-to-br from-[#0D1F0D] via-[#1B2F1B] to-[#1A2520] opacity-95"></div>
-            {/* Secondary dark green overlay */}
-            <div className="absolute inset-0 bg-gradient-to-tr from-[#2E4A2E]/30 via-[#1B3A1B]/20 to-[#1F3A1F]/35"></div>
-            {/* Honey accent spots - darker */}
-            <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#FFB300]/8 rounded-full blur-3xl animate-pulse"></div>
-            <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-[#4CAF50]/12 rounded-full blur-3xl animate-pulse" style={{animationDelay: '2s'}}></div>
-            <div className="absolute top-1/3 right-1/6 w-64 h-64 bg-[#66BB6A]/10 rounded-full blur-2xl animate-pulse" style={{animationDelay: '4s'}}></div>
-            {/* Additional nature spots - darker */}
-            <div className="absolute top-1/2 left-1/6 w-72 h-72 bg-[#4CAF50]/8 rounded-full blur-3xl animate-pulse" style={{animationDelay: '1s'}}></div>
-            <div className="absolute bottom-1/4 left-1/3 w-56 h-56 bg-[#66BB6A]/12 rounded-full blur-2xl animate-pulse" style={{animationDelay: '3s'}}></div>
+            {/* Forest background image - dark mode */}
+            <div 
+              className="absolute inset-0 bg-cover bg-center bg-no-repeat animate-[slowZoom_30s_ease-in-out_infinite]"
+              style={{
+                backgroundImage: `url('https://plus.unsplash.com/premium_photo-1724314652701-2e9de1099eba?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2532')`,
+              }}
+            ></div>
+            {/* Dark overlay for readability */}
+            <div className="absolute inset-0 bg-gradient-to-br from-[#0D1F0D]/85 via-[#1B2F1B]/90 to-[#1A2520]/85"></div>
+            {/* Animated gradient overlay */}
+            <div className="absolute inset-0 bg-gradient-to-tr from-[#2E4A2E]/40 via-[#1B3A1B]/30 to-[#1F3A1F]/45 animate-[gradientShift_15s_ease-in-out_infinite]"></div>
+            
+            {/* Floating orbs - enhanced */}
+            <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#FFB300]/10 rounded-full blur-3xl animate-[float_8s_ease-in-out_infinite]"></div>
+            <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-[#4CAF50]/15 rounded-full blur-3xl animate-[float_10s_ease-in-out_infinite]" style={{animationDelay: '2s'}}></div>
+            <div className="absolute top-1/3 right-1/6 w-64 h-64 bg-[#66BB6A]/12 rounded-full blur-2xl animate-[float_12s_ease-in-out_infinite]" style={{animationDelay: '4s'}}></div>
+            <div className="absolute top-1/2 left-1/6 w-72 h-72 bg-[#4CAF50]/10 rounded-full blur-3xl animate-[float_9s_ease-in-out_infinite]" style={{animationDelay: '1s'}}></div>
+            <div className="absolute bottom-1/4 left-1/3 w-56 h-56 bg-[#66BB6A]/15 rounded-full blur-2xl animate-[float_11s_ease-in-out_infinite]" style={{animationDelay: '3s'}}></div>
+            
+            {/* Additional floating particles */}
+            <div className="absolute top-1/4 right-1/3 w-32 h-32 bg-[#FFB300]/8 rounded-full blur-xl animate-[floatSlow_20s_ease-in-out_infinite]"></div>
+            <div className="absolute bottom-1/3 left-1/4 w-40 h-40 bg-[#8BC34A]/10 rounded-full blur-xl animate-[floatSlow_18s_ease-in-out_infinite]" style={{animationDelay: '5s'}}></div>
           </>
         ) : (
           <>
-            {/* Light mode gradient */}
-            <div className="absolute inset-0 bg-gradient-to-br from-[#F1F8E9] via-[#E8F5E8] to-[#C8E6C8] opacity-95"></div>
-            {/* Secondary green overlay */}
-            <div className="absolute inset-0 bg-gradient-to-tr from-[#66BB6A]/20 via-[#8BC34A]/15 to-[#A5D6A7]/25"></div>
-            {/* Honey accent spots */}
-            <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#FFB300]/12 rounded-full blur-3xl animate-pulse"></div>
-            <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-[#4CAF50]/18 rounded-full blur-3xl animate-pulse" style={{animationDelay: '2s'}}></div>
-            <div className="absolute top-1/3 right-1/6 w-64 h-64 bg-[#81C784]/15 rounded-full blur-2xl animate-pulse" style={{animationDelay: '4s'}}></div>
-            {/* Additional nature spots */}
-            <div className="absolute top-1/2 left-1/6 w-72 h-72 bg-[#66BB6A]/12 rounded-full blur-3xl animate-pulse" style={{animationDelay: '1s'}}></div>
-            <div className="absolute bottom-1/4 left-1/3 w-56 h-56 bg-[#A5D6A7]/20 rounded-full blur-2xl animate-pulse" style={{animationDelay: '3s'}}></div>
+            {/* Forest background image - light mode */}
+            <div 
+              className="absolute inset-0 bg-cover bg-center bg-no-repeat animate-[slowZoom_30s_ease-in-out_infinite]"
+              style={{
+                backgroundImage: `url('https://plus.unsplash.com/premium_photo-1724314652701-2e9de1099eba?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2532')`,
+              }}
+            ></div>
+            {/* Light overlay for readability */}
+            <div className="absolute inset-0 bg-gradient-to-br from-[#F1F8E9]/90 via-[#E8F5E8]/92 to-[#C8E6C8]/88"></div>
+            {/* Animated gradient overlay */}
+            <div className="absolute inset-0 bg-gradient-to-tr from-[#66BB6A]/25 via-[#8BC34A]/20 to-[#A5D6A7]/30 animate-[gradientShift_15s_ease-in-out_infinite]"></div>
+            
+            {/* Floating orbs - enhanced */}
+            <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#FFB300]/15 rounded-full blur-3xl animate-[float_8s_ease-in-out_infinite]"></div>
+            <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-[#4CAF50]/20 rounded-full blur-3xl animate-[float_10s_ease-in-out_infinite]" style={{animationDelay: '2s'}}></div>
+            <div className="absolute top-1/3 right-1/6 w-64 h-64 bg-[#81C784]/18 rounded-full blur-2xl animate-[float_12s_ease-in-out_infinite]" style={{animationDelay: '4s'}}></div>
+            <div className="absolute top-1/2 left-1/6 w-72 h-72 bg-[#66BB6A]/15 rounded-full blur-3xl animate-[float_9s_ease-in-out_infinite]" style={{animationDelay: '1s'}}></div>
+            <div className="absolute bottom-1/4 left-1/3 w-56 h-56 bg-[#A5D6A7]/25 rounded-full blur-2xl animate-[float_11s_ease-in-out_infinite]" style={{animationDelay: '3s'}}></div>
+            
+            {/* Additional floating particles */}
+            <div className="absolute top-1/4 right-1/3 w-32 h-32 bg-[#FFB300]/12 rounded-full blur-xl animate-[floatSlow_20s_ease-in-out_infinite]"></div>
+            <div className="absolute bottom-1/3 left-1/4 w-40 h-40 bg-[#8BC34A]/15 rounded-full blur-xl animate-[floatSlow_18s_ease-in-out_infinite]" style={{animationDelay: '5s'}}></div>
           </>
         )}
       </div>
