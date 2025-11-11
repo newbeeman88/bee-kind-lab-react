@@ -17,7 +17,7 @@ import {
 
 import { Calendar, MapPin, Clock, Users, ChevronRight, Plus, Edit, Upload, X, Image as ImageIcon } from 'lucide-react';
 import { toast } from 'sonner';
-import { ImageWithFallback } from './figma/ImageWithFallback';
+import { ImageWithFallback } from './fallback/ImageWithFallback';
 
 interface User {
   username: string;
@@ -597,7 +597,7 @@ export function Events({ isLoggedIn, user, onLoginClick, onRegisterClick }: Even
                 ) : (
                   <div className="space-y-2">
                     <p className="text-xs text-muted-foreground text-center">
-                      Join the hive to register for events!
+                      Join our lab to register for events!
                     </p>
                     <div className="flex space-x-2">
                       <Button 
@@ -842,7 +842,7 @@ export function Events({ isLoggedIn, user, onLoginClick, onRegisterClick }: Even
                     onClick={handleCreateEventClick}
                     className="bg-gradient-to-r from-primary to-secondary text-white"
                   >
-                    Join the Hive!
+                    Join our sweet lab!
                   </Button>
                 </div>
               </div>

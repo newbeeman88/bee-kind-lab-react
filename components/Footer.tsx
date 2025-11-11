@@ -125,7 +125,7 @@ export function Footer({ onNavigate, onChatClick, isLoggedIn }: FooterProps) {
                 <HoneyJarIcon size={28} className="animate-bounce" />
                 Join Our Sweet Newsletter! 
               </h3>
-              <p className="text-slate-500 text-sm sm:text-base" style={{ fontFamily: 'var(--font-family-primary)' }}>
+              <p className="text-slate-200 text-sm sm:text-base" style={{ fontFamily: 'var(--font-family-primary)' }}>
                 Get buzzing updates, beekeeping tips, and exclusive hive insights
               </p>
             </div>
@@ -141,7 +141,7 @@ export function Footer({ onNavigate, onChatClick, isLoggedIn }: FooterProps) {
               <Button
                 type="submit"
                 disabled={isSubscribing}
-                className="bg-blue-700 hover:bg-[#22e60c] text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 h-11 sm:h-12 px-6"
+                className="bg-orange-400 hover:bg-green-300 text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 h-11 sm:h-12 px-6"
                 style={{ fontFamily: 'var(--font-family-primary)' }}
               >
                 {isSubscribing ? (
@@ -178,7 +178,7 @@ export function Footer({ onNavigate, onChatClick, isLoggedIn }: FooterProps) {
                 <span className="text-xs text-white/70 font-medium -mt-1">Let's bee kind and bee nice to each other 🍯</span>
               </div>
             </div>
-            <p className="text-white/80 text-sm mb-4 leading-relaxed" style={{ fontFamily: 'var(--font-family-primary)' }}>
+            <p className="text-slate-200 text-sm mb-4 leading-relaxed" style={{ fontFamily: 'var(--font-family-primary)' }}>
               A warm, buzzing community for passionate beekeepers to share knowledge, connect, and grow together.
             </p>
             

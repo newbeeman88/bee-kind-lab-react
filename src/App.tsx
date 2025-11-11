@@ -524,10 +524,10 @@ export default function App() {
           <section className="relative">
             <div className="max-w-4xl mx-auto px-4 py-12">
               <div className="text-center mb-12">
-                <h1 className="text-6xl font-bold text-lime-500 mb-4" style={{ fontFamily: 'var(--font-family-heading)' }}>
+                <h1 className="text-6xl font-bold text-lime-800/80 mb-4" style={{ fontFamily: 'var(--font-family-heading)' }}>
                   About The BeeKind Lab
                 </h1>
-                <p className="text-lg text-sky-400 max-w-2xl mx-auto">
+                <p className="text-lg text-zinc-800/40 max-w-2xl mx-auto">
                   Welcome to the sweetest community for beekeepers! <br />Learn, share, and grow together in our buzzing ecosystem.
                 </p>
               </div>
@@ -537,7 +537,7 @@ export default function App() {
                   <h2 className="text-2xl font-bold mb-4 text-green-600" style={{ fontFamily: 'var(--font-family-heading)' }}>
                     Our Mission 🍯  
                   </h2>
-                  <p className="text-blue-400 leading-relaxed">
+                  <p className="text-zinc-600 leading-relaxed">
                     The BeeKind Lab is dedicated to bringing together beekeepers of all experience levels to share knowledge, 
                     celebrate successes, and support each other through challenges. <br /> From first-time hive inspections to 
                     advanced queen rearing techniques, we're here to help you succeed!
@@ -548,7 +548,7 @@ export default function App() {
                   <h2 className="text-2xl font-bold text-pink-600 mb-4" style={{ fontFamily: 'var(--font-family-heading)' }}>
                     Features We provide
                   </h2>
-                  <ul className="text-red-400 space-y-2">
+                  <ul className="text-zinc-600 space-y-2">
                     <li> - Share your beekeeping experiences and photos</li>
                     <li> - Join local events and workshops</li>
                     <li> - Get help from experienced beekeepers</li>

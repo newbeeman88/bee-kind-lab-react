@@ -8,7 +8,7 @@ import { Textarea } from './ui/textarea';
 import { Label } from './ui/label';
 import { Badge } from './ui/badge';
 import { Plus, User, Calendar, Edit, Trash2, X, Heart, MessageCircle, TrendingUp, Image as ImageIcon } from 'lucide-react';
-import { ImageWithFallback } from './figma/ImageWithFallback';
+import { ImageWithFallback } from './fallback/ImageWithFallback';
 import { SleepyBeeIcon } from './MyIcons';
 import { toast } from 'sonner';
 

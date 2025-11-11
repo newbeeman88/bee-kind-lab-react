@@ -149,7 +149,7 @@ export function AuthModal({ isOpen, onClose, onLogin, onRegister, defaultTab = '
         setRegisterForm({ username: '', email: '', password: '', confirmPassword: '' });
         clearErrors();
         setTouched({});
-        toast.success(`Welcome to The Hive Hub, ${registerForm.username}! Your account has been created successfully.`);
+        toast.success(`Welcome to The BeeKind Lab, ${registerForm.username}! Your account has been created successfully.`);
         onClose();
       } else {
         setRegisterErrors([result.error || 'Registration failed. Please try again.']);
@@ -203,7 +203,7 @@ export function AuthModal({ isOpen, onClose, onLogin, onRegister, defaultTab = '
       <DialogContent className="auth-modal sm:max-w-lg max-w-[95vw] h-[90vh] sm:h-auto sm:max-h-[85vh] overflow-hidden flex flex-col">
         <DialogHeader className="flex-shrink-0">
           <DialogTitle className="text-center text-2xl text-foreground">
-            Welcome to The Hive Hub
+            Welcome to The BeeKind Lab
           </DialogTitle>
           <DialogDescription className="text-center text-muted-foreground">
             Join our beekeeping community or sign in to your account

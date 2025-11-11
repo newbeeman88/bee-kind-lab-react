@@ -1,5 +1,5 @@
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
-import { CheckCircle2, AlertCircle, Shield, User, Mail, Key } from 'lucide-react';
+import { AlertCircle, Shield, User, Mail, Key } from 'lucide-react';
 
 interface ValidationRulesProps {
   compact?: boolean;

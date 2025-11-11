@@ -9,9 +9,8 @@ import { Switch } from './ui/switch';
 import { Textarea } from './ui/textarea';
 import { Progress } from './ui/progress';
 import { Alert, AlertDescription } from './ui/alert';
-// import { User, Mail, Lock, Bell, Shield, Palette, Camera, AlertCircle, CheckCircle2, Eye, EyeOff } from 'lucide-react';
 import { User, Lock, Bell, Shield, Palette, Camera, AlertCircle, CheckCircle2, Eye, EyeOff } from 'lucide-react';
-// import { ImageWithFallback } from './figma/ImageWithFallback';
+
 import { toast } from "sonner";
 import { 
   validatePassword, 

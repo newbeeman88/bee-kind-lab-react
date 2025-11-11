@@ -5,7 +5,7 @@ import { Textarea } from './ui/textarea';
 import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
 import { Card, CardContent, CardHeader } from './ui/card';
 import { User, Calendar, Heart, ChevronUp, ChevronDown, MessageCircle, Share, Reply, Send } from 'lucide-react';
-import { ImageWithFallback } from './figma/ImageWithFallback';
+import { ImageWithFallback } from './fallback/ImageWithFallback';
 import { ShareModal } from './ShareModal';
 import { useState, useEffect } from 'react';
 

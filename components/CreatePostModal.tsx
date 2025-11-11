@@ -7,7 +7,7 @@ import { Label } from './ui/label';
 import { Card, CardContent } from './ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from './ui/tabs';
 import { ImageIcon, Search, Upload, Camera, Loader2 } from 'lucide-react';
-import { ImageWithFallback } from './figma/ImageWithFallback';
+import { ImageWithFallback } from './fallback/ImageWithFallback';
 
 interface CreatePostModalProps {
   isOpen: boolean;

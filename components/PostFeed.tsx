@@ -3,7 +3,7 @@ import { Card, CardContent, CardHeader } from './ui/card';
 import { Button } from './ui/button';
 import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
 import { User, Calendar, ChevronUp, ChevronDown, MessageCircle, Eye } from 'lucide-react';
-import { ImageWithFallback } from './figma/ImageWithFallback';
+import { ImageWithFallback } from './fallback/ImageWithFallback';
 import { PostDetailModal } from './PostDetailModal';
 import { ShareModal } from './ShareModal';
 
