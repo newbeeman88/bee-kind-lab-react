@@ -3,7 +3,7 @@ import { Button } from './ui/button';
 import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger, DropdownMenuSeparator } from './ui/dropdown-menu';
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from './ui/sheet';
-import { User, LogOut, Menu } from 'lucide-react';
+import { User, LogOut, Menu, Moon, Sun } from 'lucide-react';
 
 // Importing SVGs as components
 import {
@@ -36,9 +36,11 @@ interface NavigationProps {
   currentPage?: string;
   onNavigate?: (page: string) => void;
   user?: User | null;
+  isDarkMode?: boolean;
+  onToggleDarkMode?: () => void;
 }
 
-export function Navigation({ isLoggedIn, onLoginClick, onLogout, onRegisterClick, onChatClick, currentPage = 'home', onNavigate, user }: NavigationProps) {
+export function Navigation({ isLoggedIn, onLoginClick, onLogout, onRegisterClick, onChatClick, currentPage = 'home', onNavigate, user, isDarkMode = false, onToggleDarkMode }: NavigationProps) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const handleMobileNavigation = (page: string) => {
@@ -160,6 +162,23 @@ export function Navigation({ isLoggedIn, onLoginClick, onLogout, onRegisterClick
               </>
             )}
           </div>
+
+          {/* Theme Toggle Button */}
+          {onToggleDarkMode && (
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={onToggleDarkMode}
+              className="hidden md:flex items-center justify-center p-2 hover:bg-primary/10 rounded-full transition-all duration-300"
+              title={isDarkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}
+            >
+              {isDarkMode ? (
+                <Sun className="h-5 w-5 text-primary" />
+              ) : (
+                <Moon className="h-5 w-5 text-foreground" />
+              )}
+            </Button>
+          )}
 
           {/* Mobile Navigation and Auth */}
           <div className="flex items-center space-x-2">
@@ -309,6 +328,29 @@ export function Navigation({ isLoggedIn, onLoginClick, onLogout, onRegisterClick
                         <RobotHeartIcon size={20} className="fill-current" />
                         <span style={{ fontFamily: 'var(--font-family-primary)' }}>Ask AI</span>
                       </button>
+
+                      {/* Theme Toggle */}
+                      {onToggleDarkMode && (
+                        <button 
+                          onClick={() => {
+                            console.log('Theme toggle clicked');
+                            handleMobileAction(onToggleDarkMode);
+                          }}
+                          className="flex items-center space-x-3 px-4 py-3 rounded-lg transition-all duration-300 text-left w-full text-foreground hover:text-primary hover:bg-primary/5"
+                        >
+                          {isDarkMode ? (
+                            <>
+                              <Sun className="w-5 h-5" />
+                              <span style={{ fontFamily: 'var(--font-family-primary)' }}>Light Mode</span>
+                            </>
+                          ) : (
+                            <>
+                              <Moon className="w-5 h-5" />
+                              <span style={{ fontFamily: 'var(--font-family-primary)' }}>Dark Mode</span>
+                            </>
+                          )}
+                        </button>
+                      )}
                     </>
                   ) : (
                     <>
@@ -343,6 +385,29 @@ export function Navigation({ isLoggedIn, onLoginClick, onLogout, onRegisterClick
                         <EarthCommunityIcon size={20} className="fill-current" />
                         <span style={{ fontFamily: 'var(--font-family-primary)' }}>Community</span>
                       </button>
+
+                      {/* Theme Toggle */}
+                      {onToggleDarkMode && (
+                        <button 
+                          onClick={() => {
+                            console.log('Theme toggle clicked');
+                            handleMobileAction(onToggleDarkMode);
+                          }}
+                          className="flex items-center space-x-3 px-4 py-3 rounded-lg transition-all duration-300 text-left w-full text-foreground hover:text-primary hover:bg-primary/5"
+                        >
+                          {isDarkMode ? (
+                            <>
+                              <Sun className="w-5 h-5" />
+                              <span style={{ fontFamily: 'var(--font-family-primary)' }}>Light Mode</span>
+                            </>
+                          ) : (
+                            <>
+                              <Moon className="w-5 h-5" />
+                              <span style={{ fontFamily: 'var(--font-family-primary)' }}>Dark Mode</span>
+                            </>
+                          )}
+                        </button>
+                      )}
                       
                       {/* Authentication Buttons */}
                       <div className="pt-4 border-t border-border mt-4 space-y-3">
