@@ -3,6 +3,10 @@
 The preview for the web site:
 ![preview](https://github.com/newbeeman88/bee-kind-lab-react/blob/main/web_preview.gif)
 
+## About the frontend project
+The project now is being hosted on [Vercel](https://vercel.com/), which provides the developer tools and cloud infrastructure to build, scale, and secure a faster, more personalized web.
+
+Visit https://bee-kind-lab-1111.vercel.app/ for a quick tour!
 
 ## Features
 
