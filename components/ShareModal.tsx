@@ -129,18 +129,18 @@ export function ShareModal({ isOpen, onClose, post }: ShareModalProps) {
   ];
 
   return (
-    <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-[95vw] sm:max-w-[90vw] md:max-w-[600px] lg:max-w-[700px] max-h-[90vh] p-0 overflow-y-auto bg-gradient-to-br from-[#FFFBEB] to-[#FFF8E1] border-[#FFB300]/20 shadow-2xl">
+    <Dialog open={isOpen} onOpenChange={(open) => !open && onClose()}>
+      <DialogContent className="max-w-[95vw] sm:max-w-[90vw] md:max-w-[600px] lg:max-w-[700px] max-h-[85vh] sm:max-h-[90vh] p-0 overflow-y-auto bg-gradient-to-br from-[#FFFBEB] to-[#FFF8E1] border-[#FFB300]/20 shadow-2xl gap-0">
         {/* Header with gradient background */}
-        <div className="bg-gradient-to-r from-[#FFB300] to-[#FFA000] p-4 sm:p-6 text-white relative overflow-hidden">
+        <div className="bg-gradient-to-r from-[#FFB300] to-[#FFA000] p-3 sm:p-4 md:p-6 text-white relative overflow-hidden">
           {/* Background decoration */}
           <div className="absolute top-0 right-0 w-16 sm:w-24 h-16 sm:h-24 bg-white/10 rounded-full -mr-8 sm:-mr-12 -mt-8 sm:-mt-12"></div>
           <div className="absolute bottom-0 left-0 w-12 sm:w-16 h-12 sm:h-16 bg-white/5 rounded-full -ml-6 sm:-ml-8 -mb-6 sm:-mb-8"></div>
           
-          <DialogHeader className="space-y-2 sm:space-y-3 relative z-10">
-            <DialogTitle className="flex items-center gap-2 sm:gap-3 text-lg sm:text-xl font-bold" style={{ fontFamily: 'var(--font-family-heading)' }}>
-              <div className="p-1.5 sm:p-2 bg-white/20 rounded-lg sm:rounded-xl backdrop-blur-sm hover:scale-110 transition-transform duration-300">
-                <SharingIcon size={20} className="sm:w-6 sm:h-6" />
+          <DialogHeader className="space-y-1 sm:space-y-2 md:space-y-3 relative z-10">
+            <DialogTitle className="flex items-center gap-2 sm:gap-3 text-base sm:text-lg md:text-xl font-bold" style={{ fontFamily: 'var(--font-family-heading)' }}>
+              <div className="p-1.5 sm:p-2 bg-white/20 rounded-lg sm:rounded-xl backdrop-blur-sm flex-shrink-0">
+                <SharingIcon size={20} className="sm:w-5 sm:h-5 md:w-6 md:h-6" />
               </div>
               <span className="truncate">Share the Buzz! 🐝</span>
             </DialogTitle>
@@ -150,7 +150,7 @@ export function ShareModal({ isOpen, onClose, post }: ShareModalProps) {
           </DialogHeader>
         </div>
         
-        <div className="p-4 sm:p-6 space-y-4 sm:space-y-6">
+        <div className="p-3 sm:p-4 md:p-6 space-y-3 sm:space-y-4 md:space-y-6">
           {/* Social Media Options */}
           <div className="space-y-3 sm:space-y-4">
             <h3 className="text-sm sm:text-base font-semibold text-[#6D4C41] flex items-center gap-2" style={{ fontFamily: 'var(--font-family-heading)' }}>
@@ -159,17 +159,17 @@ export function ShareModal({ isOpen, onClose, post }: ShareModalProps) {
               </div>
               <span className="truncate">Share on Social Platforms ✨</span>
             </h3>
-            <div className="grid grid-cols-2 md:grid-cols-2 gap-2 sm:gap-3">
+            <div className="grid grid-cols-2 gap-2 sm:gap-3">
               {shareOptions.map((option) => (
                 <Button
                   key={option.name}
                   onClick={option.action}
-                  className={`${option.bgColor} ${option.hoverColor} text-white border-0 h-12 sm:h-14 flex items-center justify-center gap-2 sm:gap-3 transition-all duration-300 hover:scale-105 hover:shadow-lg font-semibold rounded-xl sm:rounded-2xl relative overflow-hidden group`}
+                  className={`${option.bgColor} ${option.hoverColor} text-white border-0 h-11 sm:h-12 md:h-14 flex items-center justify-center gap-1.5 sm:gap-2 md:gap-3 transition-all duration-300 hover:scale-105 hover:shadow-lg font-semibold rounded-lg sm:rounded-xl md:rounded-2xl relative overflow-hidden group`}
                   style={{ fontFamily: 'var(--font-family-primary)' }}
                 >
                   <div className="absolute inset-0 bg-white/10 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-500"></div>
-                  <div className="relative z-10 flex items-center gap-2">
-                    <div className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0">{option.icon}</div>
+                  <div className="relative z-10 flex items-center gap-1.5 sm:gap-2">
+                    <div className="w-3.5 h-3.5 sm:w-4 sm:h-4 md:w-5 md:h-5 flex-shrink-0">{option.icon}</div>
                     <span className="text-xs sm:text-sm truncate">{option.name}</span>
                   </div>
                 </Button>

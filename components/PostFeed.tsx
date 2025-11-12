@@ -148,26 +148,26 @@ export function PostFeed({ isLoggedIn, currentUser, posts, onCreatePost, onUpdat
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
         {posts.map((post) => (
-          <Card key={post.id} className="hover:shadow-lg transition-shadow duration-200 border border-border">
-            <CardHeader className="pb-3">
-              <div className="flex items-center space-x-3 mb-3">
-                <Avatar className="w-8 h-8">
+          <Card key={post.id} className="hover:shadow-lg transition-shadow duration-200 border border-border flex flex-col">
+            <CardHeader className="pb-2 sm:pb-3">
+              <div className="flex items-center space-x-2 sm:space-x-3 mb-2 sm:mb-3">
+                <Avatar className="w-7 h-7 sm:w-8 sm:h-8 flex-shrink-0">
                   <AvatarImage src="" />
-                  <AvatarFallback className="bg-secondary text-secondary-foreground text-sm">
-                    <User className="w-4 h-4" />
+                  <AvatarFallback className="bg-secondary text-secondary-foreground text-xs sm:text-sm">
+                    <User className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                   </AvatarFallback>
                 </Avatar>
-                <div>
-                  <p className="font-medium text-sm text-foreground">{post.author}</p>
+                <div className="min-w-0 flex-1">
+                  <p className="font-medium text-xs sm:text-sm text-foreground truncate">{post.author}</p>
                   <div className="flex items-center text-xs text-muted-foreground">
-                    <Calendar className="w-3 h-3 mr-1" />
-                    {post.date}
+                    <Calendar className="w-3 h-3 mr-1 flex-shrink-0" />
+                    <span className="truncate">{post.date}</span>
                   </div>
                 </div>
               </div>
-            <h3 className="font-bold text-foreground">{post.title}</h3>
+              <h3 className="font-bold text-sm sm:text-base text-foreground line-clamp-2">{post.title}</h3>
             </CardHeader>
-            <CardContent className="pt-0 space-y-4">
+            <CardContent className="pt-0 space-y-3 sm:space-y-4">
               {post.image && (
                 <div className="rounded-md overflow-hidden">
                   <ImageWithFallback
@@ -178,24 +178,24 @@ export function PostFeed({ isLoggedIn, currentUser, posts, onCreatePost, onUpdat
                 </div>
               )}
               
-              <p className="text-foreground text-sm">
+              <p className="text-foreground text-xs sm:text-sm leading-relaxed">
                 {truncateContent(post.content)}
               </p>
               
               {/* Action Buttons */}
-              <div className="flex items-center justify-between pt-2">
-                <div className="flex items-center space-x-2">
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 pt-2">
+                <div className="flex items-center flex-wrap gap-1 sm:gap-2">
                   {/* Like Button */}
                   <Button
                     variant="ghost"
                     size="sm"
                     onClick={() => handleLike(post.id)}
                     disabled={!isLoggedIn}
-                    className={`flex items-center space-x-1 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-950 ${
+                    className={`flex items-center space-x-1 px-2 sm:px-3 h-8 sm:h-9 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-950 ${
                       userLikes.has(post.id) ? 'text-red-500' : 'text-muted-foreground'
                     }`}
                   >
-                    <HeartBeatIcon size={16} className={userLikes.has(post.id) ? 'animate-pulse' : ''} />
+                    <HeartBeatIcon size={14} className={`sm:w-4 sm:h-4 ${userLikes.has(post.id) ? 'animate-pulse' : ''}`} />
                     <span className="text-xs font-medium">{post.likes}</span>
                   </Button>
                   
@@ -205,11 +205,11 @@ export function PostFeed({ isLoggedIn, currentUser, posts, onCreatePost, onUpdat
                     size="sm"
                     onClick={() => handleUpvote(post.id)}
                     disabled={!isLoggedIn}
-                    className={`flex items-center space-x-1 hover:text-green-500 hover:bg-green-50 dark:hover:bg-green-950 ${
+                    className={`flex items-center space-x-1 px-2 sm:px-3 h-8 sm:h-9 hover:text-green-500 hover:bg-green-50 dark:hover:bg-green-950 ${
                       userVotes[post.id] === 'up' ? 'text-green-500' : 'text-muted-foreground'
                     }`}
                   >
-                    <ChevronUp className="w-4 h-4" />
+                    <ChevronUp className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                     <span className="text-xs">{post.upvotes}</span>
                   </Button>
                   
@@ -219,11 +219,11 @@ export function PostFeed({ isLoggedIn, currentUser, posts, onCreatePost, onUpdat
                     size="sm"
                     onClick={() => handleDownvote(post.id)}
                     disabled={!isLoggedIn}
-                    className={`flex items-center space-x-1 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-950 ${
+                    className={`flex items-center space-x-1 px-2 sm:px-3 h-8 sm:h-9 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-950 ${
                       userVotes[post.id] === 'down' ? 'text-red-500' : 'text-muted-foreground'
                     }`}
                   >
-                    <ChevronDown className="w-4 h-4" />
+                    <ChevronDown className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                     <span className="text-xs">{post.downvotes}</span>
                   </Button>
                   
@@ -232,9 +232,9 @@ export function PostFeed({ isLoggedIn, currentUser, posts, onCreatePost, onUpdat
                     variant="ghost"
                     size="sm"
                     onClick={() => handleCommentClick(post)}
-                    className="flex items-center space-x-1 hover:text-blue-500 hover:bg-blue-50 dark:hover:bg-blue-950 text-muted-foreground"
+                    className="flex items-center space-x-1 px-2 sm:px-3 h-8 sm:h-9 hover:text-blue-500 hover:bg-blue-50 dark:hover:bg-blue-950 text-muted-foreground"
                   >
-                    <MessageCircle className="w-4 h-4" />
+                    <MessageCircle className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                     <span className="text-xs">{post.comments}</span>
                   </Button>
                   
@@ -243,9 +243,9 @@ export function PostFeed({ isLoggedIn, currentUser, posts, onCreatePost, onUpdat
                     variant="ghost"
                     size="sm"
                     onClick={() => handleShare(post)}
-                    className="flex items-center space-x-1 hover:text-primary hover:bg-primary/10 text-muted-foreground"
+                    className="flex items-center space-x-1 px-2 sm:px-3 h-8 sm:h-9 hover:text-primary hover:bg-primary/10 text-muted-foreground"
                   >
-                    <SharingIcon size={16} />
+                    <SharingIcon size={14} className="sm:w-4 sm:h-4" />
                   </Button>
                 </div>
                 
@@ -253,10 +253,10 @@ export function PostFeed({ isLoggedIn, currentUser, posts, onCreatePost, onUpdat
                 <Button 
                   variant="outline" 
                   size="sm" 
-                  className="text-primary border-primary hover:bg-primary hover:text-primary-foreground"
+                  className="w-full sm:w-auto text-primary border-primary hover:bg-primary hover:text-primary-foreground h-8 sm:h-9 text-xs sm:text-sm"
                   onClick={() => handleReadMore(post)}
                 >
-                  <Eye className="w-4 h-4 mr-1" />
+                  <Eye className="w-3.5 h-3.5 sm:w-4 sm:h-4 mr-1" />
                   Read More
                 </Button>
               </div>
