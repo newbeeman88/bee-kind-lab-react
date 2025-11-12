@@ -48,33 +48,38 @@ Visit https://bee-kind-lab-1111.vercel.app/ for a quick tour!
 ### Installation
 
 1. **Clone the repository**
-   ```bash
-   $ git clone https://github.com/newbeeman88/bee-kind-lab-react.git
-   $ cd bee-kind-lab-react
-   ```
+
+```bash
+$ git clone https://github.com/newbeeman88/bee-kind-lab-react.git
+
+$ cd bee-kind-lab-react
+```
 
 2. **Install dependencies**
-   ```bash
-   $ npm install
-   # or
-   $ yarn install
-   # or
-   $ pnpm install
-   ```
+
+```bash
+$ npm install
+# or
+$ yarn install
+# or
+$ pnpm install
+```
 
 3. **Start the development server**
-   ```bash
-   $ npm run dev
-   # or
-   $ yarn dev
-   # or
-   $ pnpm dev
-   ```
 
-4. **Open your browser**
-   Navigate to `http://localhost:3000`
+```bash
+$ npm run dev
+# or
+$ yarn dev
+# or
+$ pnpm dev
+```
 
-## 📧 Support
+4. **Access the web site**
+
+Open your browser and navigate to `http://localhost:3000`
+
+## Support
 
 If you have questions or need help:
 - Open an issue on GitHub
