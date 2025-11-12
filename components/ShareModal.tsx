@@ -2,7 +2,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } f
 import { Button } from './ui/button';
 import { Copy, Check, ExternalLink } from 'lucide-react';
 import { useState } from 'react';
-import { SharingIcon } from './MyIcons';
+import { SharingIcon, CloseIcon } from './MyIcons';
 
 interface ShareModalProps {
   isOpen: boolean;
@@ -129,9 +129,10 @@ export function ShareModal({ isOpen, onClose, post }: ShareModalProps) {
   ];
 
   return (
-    <Dialog open={isOpen} onOpenChange={(open) => !open && onClose()}>
-      <DialogContent className="max-w-[95vw] sm:max-w-[90vw] md:max-w-[600px] lg:max-w-[700px] max-h-[85vh] sm:max-h-[90vh] p-0 overflow-y-auto bg-gradient-to-br from-[#FFFBEB] to-[#FFF8E1] border-[#FFB300]/20 shadow-2xl gap-0">
-        {/* Header with gradient background */}
+    <Dialog open={isOpen} onOpenChange={(open) => {
+      if (!open) onClose();
+    }}>
+      <DialogContent className="max-w-[95vw] sm:max-w-[90vw] md:max-w-[600px] lg:max-w-[700px] max-h-[85vh] sm:max-h-[90vh] p-0 overflow-y-auto bg-gradient-to-br from-[#FFFBEB] to-[#FFF8E1] border-[#FFB300]/20 shadow-2xl gap-0 [&>button]:w-10 [&>button]:h-10 sm:[&>button]:w-12 sm:[&>button]:h-12 [&>button]:top-2 [&>button]:right-2 sm:[&>button]:top-3 sm:[&>button]:right-3 [&>button]:opacity-100 [&>button]:z-50 [&>button]:bg-transparent [&>button]:border-0 [&>button]:p-0 [&>button>svg]:w-full [&>button>svg]:h-full [&>button]:transition-all [&>button]:duration-200 [&>button]:hover:scale-110 [&>button]:active:scale-95 [&>button]:shadow-lg">        {/* Header with gradient background */}
         <div className="bg-gradient-to-r from-[#FFB300] to-[#FFA000] p-3 sm:p-4 md:p-6 text-white relative overflow-hidden">
           {/* Background decoration */}
           <div className="absolute top-0 right-0 w-16 sm:w-24 h-16 sm:h-24 bg-white/10 rounded-full -mr-8 sm:-mr-12 -mt-8 sm:-mt-12"></div>
@@ -242,6 +243,17 @@ export function ShareModal({ isOpen, onClose, post }: ShareModalProps) {
                 {shareContent}
               </p>
             </div>
+          </div>
+          {/* Close Button Footer - Mobile Friendly */}
+          <div className="pt-3 sm:pt-4 border-t border-[#FFB300]/20">
+            <Button
+              onClick={onClose}
+              className="w-full bg-gradient-to-r from-[#6D4C41] to-[#8D6E63] hover:from-[#5D3C31] hover:to-[#7D5E53] text-white font-semibold h-11 sm:h-12 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
+              style={{ fontFamily: 'var(--font-family-primary)' }}
+            >
+              <CloseIcon size={30} className="mr-2 sm:w-6 sm:h-6" />
+              Close
+            </Button>
           </div>
         </div>
       </DialogContent>

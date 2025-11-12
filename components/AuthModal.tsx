@@ -4,7 +4,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from './ui/tabs';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
 import { Label } from './ui/label';
-// import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card';
+
 import { Alert, AlertDescription } from './ui/alert';
 import { Progress } from './ui/progress';
 import { AlertCircle, CheckCircle2, Eye, EyeOff } from 'lucide-react';
@@ -198,10 +198,11 @@ export function AuthModal({ isOpen, onClose, onLogin, onRegister, defaultTab = '
     return touched[field] && (!fieldErrors[field] || fieldErrors[field].length === 0);
   };
 
-  return (
-    <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="auth-modal sm:max-w-lg max-w-[95vw] h-[90vh] sm:h-auto sm:max-h-[85vh] overflow-hidden flex flex-col">
-        <DialogHeader className="flex-shrink-0">
+return (
+    <Dialog open={isOpen} onOpenChange={(open) => {
+      if (!open) onClose();
+    }}>
+      <DialogContent className="auth-modal sm:max-w-lg max-w-[95vw] h-[90vh] sm:h-auto sm:max-h-[85vh] overflow-hidden flex flex-col [&>button]:w-10 [&>button]:h-10 sm:[&>button]:w-12 sm:[&>button]:h-12 [&>button]:top-2 [&>button]:right-2 sm:[&>button]:top-4 sm:[&>button]:right-4 [&>button]:opacity-100 [&>button]:z-50 [&>button]:bg-transparent [&>button]:border-0 [&>button]:p-0 [&>button>svg]:w-full [&>button>svg]:h-full [&>button]:transition-all [&>button]:duration-200 [&>button]:hover:scale-110 [&>button]:active:scale-95 [&>button]:shadow-lg">        <DialogHeader className="flex-shrink-0">
           <DialogTitle className="text-center text-2xl text-foreground">
             Welcome to The BeeKind Lab
           </DialogTitle>
