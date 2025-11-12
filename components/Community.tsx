@@ -174,11 +174,11 @@ export function Community({ isLoggedIn, user, onLoginClick, onRegisterClick }: C
   };
 
   return (
-    <div className="max-w-6xl mx-auto px-4 py-8">
+    <div className="max-w-6xl mx-auto px-4 sm:px-6 py-6 sm:py-8 w-full">
       {/* Non-logged user banner */}
       {!isLoggedIn && (
-        <div className="mb-8 p-6 bg-gradient-to-r from-primary/10 to-accent/10 border border-primary/20 rounded-lg">
-          <div className="flex items-center justify-between">
+        <div className="mb-6 sm:mb-8 p-4 sm:p-6 bg-gradient-to-r from-primary/10 to-accent/10 border border-primary/20 rounded-lg">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
             <div className="flex items-center space-x-4">
               <SleepyBeeIcon size={32} className="text-primary" />
               <div>

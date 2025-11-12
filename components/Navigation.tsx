@@ -61,16 +61,15 @@ export function Navigation({ isLoggedIn, onLoginClick, onLogout, onRegisterClick
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <div className="flex items-center space-x-3 cursor-pointer group" onClick={() => onNavigate?.('home')}>
+          <div className="flex items-center space-x-2 sm:space-x-3 cursor-pointer group" onClick={() => onNavigate?.('home')}>
             <div className="relative">
-              <SleepyBeeIcon size={32} className="group-hover:scale-110 transition-transform duration-300" />
-
+              <SleepyBeeIcon size={32} className="sm:w-8 sm:h-8 group-hover:scale-110 transition-transform duration-300" />
             </div>
             <div className="flex flex-col">
-              <span className="text-xl font-bold text-foreground tracking-tight" style={{ fontFamily: 'var(--font-family-heading)' }}>
+              <span className="text-base sm:text-xl font-bold text-foreground tracking-tight" style={{ fontFamily: 'var(--font-family-heading)' }}>
                 BeeKind Lab
               </span>
-              <span className="text-xs text-muted-foreground font-medium -mt-1">BeeKind & BeeNice 🍯</span>
+              <span className="text-[10px] sm:text-xs text-muted-foreground font-medium -mt-1 hidden xs:block">BeeKind & BeeNice 🍯</span>
             </div>
           </div>
 

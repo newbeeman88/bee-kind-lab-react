@@ -439,16 +439,16 @@ export function Events({ isLoggedIn, user, onLoginClick, onRegisterClick }: Even
   };
 
   return (
-    <div className="max-w-7xl mx-auto px-4 py-8">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 py-6 sm:py-8 w-full">
       {/* Header */}
-      <div className="text-center mb-12">
-        <div className="flex items-center justify-center mb-4">
-          <PiuCalendarIcon size={48} className="mr-3" />
+      <div className="text-center mb-8 sm:mb-12">
+        <div className="flex flex-col sm:flex-row items-center justify-center mb-4 gap-3">
+          <PiuCalendarIcon size={66} className="sm:w-12 sm:h-12" />
           <div>
-            <h1 className="text-4xl font-bold text-foreground mb-2" style={{ fontFamily: 'var(--font-family-heading)' }}>
+            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-foreground mb-2" style={{ fontFamily: 'var(--font-family-heading)' }}>
               Community Events 🗓️
             </h1>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-sm sm:text-base lg:text-lg text-muted-foreground max-w-2xl mx-auto px-4">
               Join fellow beekeepers for workshops, meetups, and seasonal celebrations. Learn, share, and grow together in our buzzing community!
             </p>
           </div>
@@ -456,7 +456,7 @@ export function Events({ isLoggedIn, user, onLoginClick, onRegisterClick }: Even
       </div>
 
       {/* Categories Filter */}
-      <div className="flex flex-wrap gap-3 justify-center mb-8">
+      <div className="flex flex-wrap gap-2 sm:gap-3 justify-center mb-6 sm:mb-8">
         {categories.map((category) => (
           <button
             key={category.id}

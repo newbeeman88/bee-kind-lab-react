@@ -108,7 +108,7 @@ export function HeroCarousel() {
   }, [currentSlide]);
 
   return (
-    <div className="relative w-full h-96 md:h-[500px] overflow-hidden rounded-3xl shadow-2xl group">
+    <div className="relative w-full h-64 sm:h-80 md:h-96 lg:h-[500px] overflow-hidden rounded-xl sm:rounded-2xl lg:rounded-3xl shadow-2xl group">
       {/* Image Slides */}
       <div className="relative w-full h-full">
         {heroImages.map((image, index) => (
@@ -132,61 +132,56 @@ export function HeroCarousel() {
         ))}
       </div>
 
-      {/* Main Content Overlay */}
-      <div className="absolute inset-0 flex items-start justify-start mt-3 z-20">
-        <div className="text-center text-white px-6 max-w-5xl">
-
-          {/* Current Image Info */}
-          <div className="bg-white/15 backdrop-blur-md rounded-3xl px-8 py-6 max-w-lg mx-auto border border-white/20 shadow-2xl animate-in fade-in-50 slide-in-from-bottom-4 duration-1000 delay-600">
-            <h3 className="font-bold text-xl mb-2 transition-all duration-500" 
+      {/* Current Image Info */}
+      <div className="bg-white/15 backdrop-blur-md rounded-2xl sm:rounded-3xl px-4 py-3 sm:px-6 sm:py-4 md:px-8 md:py-6 max-w-lg mx-auto border border-white/20 shadow-2xl animate-in fade-in-50 slide-in-from-bottom-4 duration-1000 delay-600">
+            <h3 className="font-bold text-sm sm:text-base md:text-xl mb-1 sm:mb-2 transition-all duration-500" 
                 style={{ fontFamily: 'var(--font-family-heading)' }}>
               {heroImages[currentSlide].title}
             </h3>
-            <p className="text-sm md:text-base opacity-90 transition-all duration-500" 
+            <p className="text-xs sm:text-sm md:text-base opacity-90 transition-all duration-500" 
                style={{ fontFamily: 'var(--font-family-primary)' }}>
               {heroImages[currentSlide].description}
             </p>
-          </div>
-        </div>
       </div>
+        
 
       {/* Navigation Arrows */}
       <Button
         variant="ghost"
         size="icon"
-        className="absolute left-4 md:left-8 top-1/2 transform -translate-y-1/2 z-30 bg-gradient-to-r from-white/25 to-white/15 hover:from-white/40 hover:to-white/30 active:from-white/50 active:to-white/40 text-white backdrop-blur-md rounded-full w-14 h-14 transition-all duration-300 hover:scale-110 active:scale-95 shadow-xl border border-white/20 opacity-80 group-hover:opacity-100"
+        className="absolute left-2 sm:left-4 md:left-8 top-1/2 transform -translate-y-1/2 z-30 bg-gradient-to-r from-white/25 to-white/15 hover:from-white/40 hover:to-white/30 active:from-white/50 active:to-white/40 text-white backdrop-blur-md rounded-full w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 transition-all duration-300 hover:scale-110 active:scale-95 shadow-xl border border-white/20 opacity-80 group-hover:opacity-100"
         onClick={prevSlide}
       >
-        <ChevronLeft className="w-7 h-7" />
+        <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7" />
       </Button>
       <Button
         variant="ghost"
         size="icon"
-        className="absolute right-4 md:right-8 top-1/2 transform -translate-y-1/2 z-30 bg-gradient-to-l from-white/25 to-white/15 hover:from-white/40 hover:to-white/30 active:from-white/50 active:to-white/40 text-white backdrop-blur-md rounded-full w-14 h-14 transition-all duration-300 hover:scale-110 active:scale-95 shadow-xl border border-white/20 opacity-80 group-hover:opacity-100"
+        className="absolute right-2 sm:right-4 md:right-8 top-1/2 transform -translate-y-1/2 z-30 bg-gradient-to-l from-white/25 to-white/15 hover:from-white/40 hover:to-white/30 active:from-white/50 active:to-white/40 text-white backdrop-blur-md rounded-full w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 transition-all duration-300 hover:scale-110 active:scale-95 shadow-xl border border-white/20 opacity-80 group-hover:opacity-100"
         onClick={nextSlide}
       >
-        <ChevronRight className="w-7 h-7" />
+        <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7" />
       </Button>
 
       {/* Auto-Play Control */}
-      <div className="absolute top-4 md:top-8 right-4 md:right-8 z-30 opacity-80 group-hover:opacity-100 transition-opacity duration-300">
+      <div className="absolute top-2 sm:top-4 md:top-8 right-2 sm:right-4 md:right-8 z-30 opacity-80 group-hover:opacity-100 transition-opacity duration-300">
         <Button
           variant="ghost"
           size="icon"
-          className="bg-gradient-to-r from-white/25 to-white/15 hover:from-white/35 hover:to-white/25 text-white backdrop-blur-md rounded-full w-12 h-12 transition-all duration-300 hover:scale-110 shadow-lg border border-white/20"
+          className="bg-gradient-to-r from-white/25 to-white/15 hover:from-white/35 hover:to-white/25 text-white backdrop-blur-md rounded-full w-10 h-10 sm:w-12 sm:h-12 transition-all duration-300 hover:scale-110 shadow-lg border border-white/20"
           onClick={toggleAutoPlay}
           title={isAutoPlaying ? 'Pause auto-play' : 'Resume auto-play'}
         >
           {isAutoPlaying ? (
-            <Pause className="w-5 h-5" />
+            <Pause className="w-4 h-4 sm:w-5 sm:h-5" />
           ) : (
-            <Play className="w-5 h-5" />
+            <Play className="w-4 h-4 sm:w-5 sm:h-5" />
           )}
         </Button>
       </div>
 
       {/* Slide Indicators with Progress */}
-      <div className="absolute bottom-6 md:bottom-8 left-1/2 transform -translate-x-1/2 z-30 flex space-x-4">
+      <div className="absolute bottom-3 sm:bottom-4 md:bottom-6 lg:bottom-8 left-1/2 transform -translate-x-1/2 z-30 flex space-x-2 sm:space-x-3 md:space-x-4">
         {heroImages.map((image, index) => (
           <button
             key={index}

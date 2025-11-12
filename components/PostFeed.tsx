@@ -131,13 +131,13 @@ export function PostFeed({ isLoggedIn, currentUser, posts, onCreatePost, onUpdat
   };
 
   return (
-    <div className="max-w-6xl mx-auto px-4 py-8">
-      <div className="flex justify-between items-center mb-8">
-        <h2 className="text-2xl font-bold text-foreground">Latest from the Community</h2>
+    <div className="max-w-6xl mx-auto px-4 sm:px-6 py-6 sm:py-8 w-full">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6 sm:mb-8">
+        <h2 className="text-xl sm:text-2xl font-bold text-foreground">Latest from the Community</h2>
         {isLoggedIn && (
           <Button 
             onClick={onCreatePost} 
-            className="bg-gradient-to-r from-primary to-secondary text-white hover:from-primary/90 hover:to-secondary/90 font-semibold rounded-full px-6 py-3 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+            className="bg-gradient-to-r from-primary to-secondary text-white hover:from-primary/90 hover:to-secondary/90 font-semibold rounded-full px-4 sm:px-6 py-2 sm:py-3 text-sm sm:text-base shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 w-full sm:w-auto"
             style={{ fontFamily: 'var(--font-family-primary)' }}
           >
             <WritePostsIcon size={20} className="mr-2" />
@@ -146,7 +146,7 @@ export function PostFeed({ isLoggedIn, currentUser, posts, onCreatePost, onUpdat
         )}
       </div>
 
-      <div className="grid md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
         {posts.map((post) => (
           <Card key={post.id} className="hover:shadow-lg transition-shadow duration-200 border border-border">
             <CardHeader className="pb-3">
@@ -165,7 +165,7 @@ export function PostFeed({ isLoggedIn, currentUser, posts, onCreatePost, onUpdat
                   </div>
                 </div>
               </div>
-              <h3 className="font-bold text-foreground">{post.title}</h3>
+            <h3 className="font-bold text-foreground">{post.title}</h3>
             </CardHeader>
             <CardContent className="pt-0 space-y-4">
               {post.image && (
@@ -173,7 +173,7 @@ export function PostFeed({ isLoggedIn, currentUser, posts, onCreatePost, onUpdat
                   <ImageWithFallback
                     src={post.image}
                     alt={post.title}
-                    className="w-full h-32 object-cover"
+                    className="w-full h-40 sm:h-48 md:h-32 object-cover"
                   />
                 </div>
               )}

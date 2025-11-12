@@ -625,12 +625,12 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen relative flex flex-col">
+    <div className="min-h-screen w-full relative flex flex-col overflow-x-hidden">
       {/* Enhanced Animated Background with Forest Theme */}
-      <div className="fixed inset-0 -z-10 overflow-hidden">
+      <div className="fixed inset-0 -z-10 overflow-hidden w-full">
         {isDarkMode ? (
           <>
-            {/* Forest background image - dark mode */}
+            {/* Tiger background image - dark mode */}
             <div 
               className="absolute inset-0 bg-cover bg-center bg-no-repeat animate-[slowZoom_30s_ease-in-out_infinite]"
               style={{
@@ -642,20 +642,20 @@ export default function App() {
             {/* Animated gradient overlay */}
             <div className="absolute inset-0 bg-gradient-to-tr from-[#2E4A2E]/40 via-[#1B3A1B]/30 to-[#1F3A1F]/45 animate-[gradientShift_15s_ease-in-out_infinite]"></div>
             
-            {/* Floating orbs - enhanced */}
-            <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#FFB300]/10 rounded-full blur-3xl animate-[float_8s_ease-in-out_infinite]"></div>
-            <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-[#4CAF50]/15 rounded-full blur-3xl animate-[float_10s_ease-in-out_infinite]" style={{animationDelay: '2s'}}></div>
-            <div className="absolute top-1/3 right-1/6 w-64 h-64 bg-[#66BB6A]/12 rounded-full blur-2xl animate-[float_12s_ease-in-out_infinite]" style={{animationDelay: '4s'}}></div>
-            <div className="absolute top-1/2 left-1/6 w-72 h-72 bg-[#4CAF50]/10 rounded-full blur-3xl animate-[float_9s_ease-in-out_infinite]" style={{animationDelay: '1s'}}></div>
-            <div className="absolute bottom-1/4 left-1/3 w-56 h-56 bg-[#66BB6A]/15 rounded-full blur-2xl animate-[float_11s_ease-in-out_infinite]" style={{animationDelay: '3s'}}></div>
+            {/* Floating orbs - enhanced and responsive */}
+            <div className="absolute top-0 left-1/4 w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96 bg-[#FFB300]/10 rounded-full blur-3xl animate-[float_8s_ease-in-out_infinite]"></div>
+            <div className="absolute bottom-0 right-1/4 w-56 h-56 sm:w-72 sm:h-72 lg:w-80 lg:h-80 bg-[#4CAF50]/15 rounded-full blur-3xl animate-[float_10s_ease-in-out_infinite]" style={{animationDelay: '2s'}}></div>
+            <div className="absolute top-1/3 right-1/6 w-48 h-48 sm:w-56 sm:h-56 lg:w-64 lg:h-64 bg-[#66BB6A]/12 rounded-full blur-2xl animate-[float_12s_ease-in-out_infinite]" style={{animationDelay: '4s'}}></div>
+            <div className="absolute top-1/2 left-1/6 w-52 h-52 sm:w-64 sm:h-64 lg:w-72 lg:h-72 bg-[#4CAF50]/10 rounded-full blur-3xl animate-[float_9s_ease-in-out_infinite]" style={{animationDelay: '1s'}}></div>
+            <div className="absolute bottom-1/4 left-1/3 w-40 h-40 sm:w-48 sm:h-48 lg:w-56 lg:h-56 bg-[#66BB6A]/15 rounded-full blur-2xl animate-[float_11s_ease-in-out_infinite]" style={{animationDelay: '3s'}}></div>
             
             {/* Additional floating particles */}
-            <div className="absolute top-1/4 right-1/3 w-32 h-32 bg-[#FFB300]/8 rounded-full blur-xl animate-[floatSlow_20s_ease-in-out_infinite]"></div>
-            <div className="absolute bottom-1/3 left-1/4 w-40 h-40 bg-[#8BC34A]/10 rounded-full blur-xl animate-[floatSlow_18s_ease-in-out_infinite]" style={{animationDelay: '5s'}}></div>
+            <div className="absolute top-1/4 right-1/3 w-24 h-24 sm:w-28 sm:h-28 lg:w-32 lg:h-32 bg-[#FFB300]/8 rounded-full blur-xl animate-[floatSlow_20s_ease-in-out_infinite]"></div>
+            <div className="absolute bottom-1/3 left-1/4 w-28 h-28 sm:w-36 sm:h-36 lg:w-40 lg:h-40 bg-[#8BC34A]/10 rounded-full blur-xl animate-[floatSlow_18s_ease-in-out_infinite]" style={{animationDelay: '5s'}}></div>
           </>
         ) : (
           <>
-            {/* Forest background image - light mode */}
+            {/* Tiger background image - light mode */}
             <div 
               className="absolute inset-0 bg-cover bg-center bg-no-repeat animate-[slowZoom_30s_ease-in-out_infinite]"
               style={{
@@ -667,16 +667,16 @@ export default function App() {
             {/* Animated gradient overlay */}
             <div className="absolute inset-0 bg-gradient-to-tr from-[#66BB6A]/25 via-[#8BC34A]/20 to-[#A5D6A7]/30 animate-[gradientShift_15s_ease-in-out_infinite]"></div>
             
-            {/* Floating orbs - enhanced */}
-            <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#FFB300]/15 rounded-full blur-3xl animate-[float_8s_ease-in-out_infinite]"></div>
-            <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-[#4CAF50]/20 rounded-full blur-3xl animate-[float_10s_ease-in-out_infinite]" style={{animationDelay: '2s'}}></div>
-            <div className="absolute top-1/3 right-1/6 w-64 h-64 bg-[#81C784]/18 rounded-full blur-2xl animate-[float_12s_ease-in-out_infinite]" style={{animationDelay: '4s'}}></div>
-            <div className="absolute top-1/2 left-1/6 w-72 h-72 bg-[#66BB6A]/15 rounded-full blur-3xl animate-[float_9s_ease-in-out_infinite]" style={{animationDelay: '1s'}}></div>
-            <div className="absolute bottom-1/4 left-1/3 w-56 h-56 bg-[#A5D6A7]/25 rounded-full blur-2xl animate-[float_11s_ease-in-out_infinite]" style={{animationDelay: '3s'}}></div>
+            {/* Floating orbs - enhanced and responsive */}
+            <div className="absolute top-0 left-1/4 w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96 bg-[#FFB300]/15 rounded-full blur-3xl animate-[float_8s_ease-in-out_infinite]"></div>
+            <div className="absolute bottom-0 right-1/4 w-56 h-56 sm:w-72 sm:h-72 lg:w-80 lg:h-80 bg-[#4CAF50]/20 rounded-full blur-3xl animate-[float_10s_ease-in-out_infinite]" style={{animationDelay: '2s'}}></div>
+            <div className="absolute top-1/3 right-1/6 w-48 h-48 sm:w-56 sm:h-56 lg:w-64 lg:h-64 bg-[#81C784]/18 rounded-full blur-2xl animate-[float_12s_ease-in-out_infinite]" style={{animationDelay: '4s'}}></div>
+            <div className="absolute top-1/2 left-1/6 w-52 h-52 sm:w-64 sm:h-64 lg:w-72 lg:h-72 bg-[#66BB6A]/15 rounded-full blur-3xl animate-[float_9s_ease-in-out_infinite]" style={{animationDelay: '1s'}}></div>
+            <div className="absolute bottom-1/4 left-1/3 w-40 h-40 sm:w-48 sm:h-48 lg:w-56 lg:h-56 bg-[#A5D6A7]/25 rounded-full blur-2xl animate-[float_11s_ease-in-out_infinite]" style={{animationDelay: '3s'}}></div>
             
             {/* Additional floating particles */}
-            <div className="absolute top-1/4 right-1/3 w-32 h-32 bg-[#FFB300]/12 rounded-full blur-xl animate-[floatSlow_20s_ease-in-out_infinite]"></div>
-            <div className="absolute bottom-1/3 left-1/4 w-40 h-40 bg-[#8BC34A]/15 rounded-full blur-xl animate-[floatSlow_18s_ease-in-out_infinite]" style={{animationDelay: '5s'}}></div>
+            <div className="absolute top-1/4 right-1/3 w-24 h-24 sm:w-28 sm:h-28 lg:w-32 lg:h-32 bg-[#FFB300]/12 rounded-full blur-xl animate-[floatSlow_20s_ease-in-out_infinite]"></div>
+            <div className="absolute bottom-1/3 left-1/4 w-28 h-28 sm:w-36 sm:h-36 lg:w-40 lg:h-40 bg-[#8BC34A]/15 rounded-full blur-xl animate-[floatSlow_18s_ease-in-out_infinite]" style={{animationDelay: '5s'}}></div>
           </>
         )}
       </div>
