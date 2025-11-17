@@ -1,17 +1,17 @@
 # bee-kind-lab-react
 
-The preview for the web site:
+The preview for the website:
 ![preview](https://github.com/newbeeman88/bee-kind-lab-react/blob/main/web_preview.gif)
 
 ## About the frontend project
-The project now is being hosted on [Vercel](https://vercel.com/), which provides the developer tools and cloud infrastructure to build, scale, and secure a faster, more personalized web.
+The project is hosted on [Vercel](https://vercel.com/), which provides the developer tools and cloud infrastructure to build, scale, and secure a faster, more personalized web.
 
 Visit https://bee-kind-lab-1111.vercel.app/ for a quick tour!
 
 ## Features
 
 ### Core Features
-- **Posts & Photography**: Share your beekeeping experiences, beutiful photos, ask questions, and help others
+- **Posts & Photography**: Share your beekeeping experiences, beautiful photos, ask questions, and help others
 - **Interactive Feed**: Like, comment, and engage with fellow beekeepers' posts
 - **User Profiles**: Customize your profile with bio, location, and experience level
 - **Communities**: Join or create local beekeeping communities
@@ -75,7 +75,7 @@ $ yarn dev
 $ pnpm dev
 ```
 
-4. **Access the web site**
+4. **Access the website**
 
 Open your browser and navigate to `http://localhost:3000`
 
